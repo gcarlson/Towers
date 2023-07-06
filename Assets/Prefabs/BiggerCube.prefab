@@ -196,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dabb216cca7558047ad64cda06ba323b, type: 2}
+  - {fileID: 2100000, guid: 4de5a9b42625e6d40b644d0064f549ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -276,5 +276,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964f5fc03f7724c4099c1eab0387ccd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multishot: 1
+  speed: 30
+  lifespan: 2
+  fireRate: 0.5
+  speedRange: 0
+  spread: 1
+  range: 200
+  projectile: 0
   turret: {fileID: 1188765609489209251}
-  bullet: {fileID: 5913315479626666771, guid: 2967e2756a54b894fbe68839a37a9ebe, type: 3}
+  bullet: {fileID: 4251504539131477505, guid: 46638b15044064b47862cbcbb89b37ff, type: 3}

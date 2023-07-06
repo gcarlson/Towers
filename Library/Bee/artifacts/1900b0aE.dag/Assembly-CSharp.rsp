@@ -351,9 +351,12 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/BulletController.cs"
 "Assets/EnemyGoal.cs"
+"Assets/EnemyHealth.cs"
 "Assets/EnemyNavMesh.cs"
 "Assets/GameManager.cs"
+"Assets/NapalmController.cs"
 "Assets/TurretController.cs"
 "Assets/TurretPlacer.cs"
 -langversion:9.0
