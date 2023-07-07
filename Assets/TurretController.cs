@@ -15,6 +15,7 @@ public class TurretController : MonoBehaviour
     public GameObject turret;
     public GameObject bullet;
     private float nextShot = 0.0f;
+    public int damageTotal = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -54,14 +55,15 @@ public class TurretController : MonoBehaviour
                         var v = o.transform.eulerAngles;
                         v.y += Random.Range(0 - spread, spread);
                         o.transform.eulerAngles = v;
+                        o.GetComponent<BulletController>().owner = this;
                         o.GetComponent<Rigidbody>().velocity = (speed + Random.Range(0 - speedRange, speedRange)) * o.transform.forward.normalized;
-
                         //o.GetComponent<Rigidbody>().velocity = speed * lookPos.normalized;
                         Destroy(o, lifespan);
                     }
                 } else
                 {
                     var o = Instantiate(bullet, targetPos + new Vector3(Random.Range(0 - spread, spread), 0.0f, Random.Range(0 - spread, spread)), rotation);
+                    o.GetComponent<NapalmController>().owner = this;
                     Destroy(o, lifespan);
                 }
             }

@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     public int maxHp = 100;
     public Canvas canvas;
 
-    public void Damage(int damage)
+    public int Damage(int damage)
     {
         hp-= damage;
         SetHealth();
@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        return damage;
     }
 
     // Start is called before the first frame update

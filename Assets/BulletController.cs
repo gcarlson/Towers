@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public int damage = 1;
+    public TurretController owner; 
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,8 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("ddd bullet collided");
-        other.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+        owner.damageTotal += other.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+
         Destroy(this.gameObject);
     }
 }
