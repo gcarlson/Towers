@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public int damage = 1;
+    public bool destroyOnHit = true;
     public TurretController owner; 
 
     // Start is called before the first frame update
@@ -23,7 +24,9 @@ public class BulletController : MonoBehaviour
     {
         print("ddd bullet collided");
         owner.damageTotal += other.gameObject.GetComponent<EnemyHealth>().Damage(damage);
-
-        Destroy(this.gameObject);
+        if (destroyOnHit)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

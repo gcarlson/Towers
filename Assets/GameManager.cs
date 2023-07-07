@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject turret1, turret2, turret3, enemy;
+    public GameObject turret1, turret2, turret3, turret4, enemy;
 
     public Transform startingPos;
     public Transform endingPos;
@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Instantiate(turret3);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Instantiate(turret4);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {

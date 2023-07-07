@@ -16,11 +16,20 @@ public class TurretController : MonoBehaviour
     public GameObject bullet;
     private float nextShot = 0.0f;
     public int damageTotal = 0;
+    public bool melee = false;
 
     // Start is called before the first frame update
     void Start()
     {
         nextShot = Time.time;
+    }
+
+    void FixedUpdate()
+    {
+        if (melee)
+        {
+            turret.transform.Rotate(0, 500 * Time.deltaTime, 0);
+        }
     }
 
     // Update is called once per frame

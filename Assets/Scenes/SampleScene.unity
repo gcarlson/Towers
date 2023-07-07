@@ -959,6 +959,7 @@ MonoBehaviour:
   turret1: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
   turret2: {fileID: 1487119330473073911, guid: c672d12ac81e07940a6b1d4430898550, type: 3}
   turret3: {fileID: 1487119330473073911, guid: 8c55a027846c2574591161589f24239e, type: 3}
+  turret4: {fileID: 1487119330473073911, guid: a9a53b7d5e23a7f49a4b5899c39ee3ca, type: 3}
   enemy: {fileID: 4683923698613847341, guid: 9738fcab36b1168448877a224d8172b6, type: 3}
   startingPos: {fileID: 171447604}
   endingPos: {fileID: 809417910}
