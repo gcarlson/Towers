@@ -23,10 +23,11 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("ddd bullet collided");
-        owner.damageTotal += other.gameObject.GetComponent<EnemyHealth>().Damage(damage);
-        if (destroyOnHit)
-        {
-            Destroy(this.gameObject);
-        }
+            owner.damageTotal += other.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+            if (destroyOnHit)
+            {
+                Destroy(this.gameObject);
+            }
+        
     }
 }
