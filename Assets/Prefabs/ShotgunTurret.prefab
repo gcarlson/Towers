@@ -276,11 +276,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964f5fc03f7724c4099c1eab0387ccd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priority: 1
   multishot: 8
   speed: 30
   lifespan: 3
   fireRate: 2
   speedRange: 2
   spread: 20
+  range: 20
+  projectile: 1
   turret: {fileID: 1188765609489209251}
   bullet: {fileID: 5913315479626666771, guid: 2967e2756a54b894fbe68839a37a9ebe, type: 3}
+  damageTotal: 0
+  melee: 0

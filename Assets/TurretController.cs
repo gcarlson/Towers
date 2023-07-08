@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
+    public enum Priority { FIRST, CLOSE, STRONG, RANDOM };
+    public Priority priority = Priority.FIRST;
     public int multishot = 1;
     public float speed = 30.0f;
     public float lifespan = 3.0f;
@@ -32,6 +34,57 @@ public class TurretController : MonoBehaviour
         }
     }
 
+    private GameObject PickTarget(ArrayList targets)
+    {
+        GameObject best = null;
+        float closest = 10000.0f;
+        switch (priority)
+        {
+            case Priority.CLOSE:
+                foreach (var enemy in targets)
+                {
+                    GameObject o = (GameObject)enemy;
+                    float d = Vector3.Distance(transform.position, o.transform.position);
+                    if (d < closest)
+                    {
+                        closest = d;
+                        best = o;
+                    }
+                }
+                return best;
+            case Priority.STRONG:
+                closest = -1.0f; ;
+                foreach (var enemy in targets)
+                {
+                    GameObject o = (GameObject)enemy;
+                    float d = o.GetComponent<EnemyHealth>().hp;
+                    if (d > closest)
+                    {
+                        closest = d;
+                        best = o;
+                    }
+                }
+                return best;
+            case Priority.FIRST:
+                foreach (var enemy in targets)
+                {
+                    GameObject o = (GameObject)enemy;
+                    float d = o.GetComponent<UnityEngine.AI.NavMeshAgent>().remainingDistance;
+                    if (d < closest)
+                    {
+                        closest = d;
+                        best = o;
+                    }
+                }
+                return best;
+            case Priority.RANDOM:
+            default:
+               return (GameObject) targets[Random.Range(0, targets.Count)];
+        }
+
+        //return (GameObject) targets[Random.Range(0, targets.Count)];
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -50,7 +103,8 @@ public class TurretController : MonoBehaviour
             
             if (inRangeEnemies.Count > 0)
             {
-                var targetPos = ((GameObject)inRangeEnemies[Random.Range(0, inRangeEnemies.Count)]).transform.position;
+                GameObject targetEnemy = PickTarget(inRangeEnemies);
+                var targetPos = targetEnemy.transform.position;
                 var lookPos = targetPos - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);

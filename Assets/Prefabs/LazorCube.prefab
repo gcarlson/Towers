@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964f5fc03f7724c4099c1eab0387ccd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priority: 2
   multishot: 1
   speed: 0
   lifespan: 3
