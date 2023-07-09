@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject turret1, turret2, turret3, turret4, turret5, enemy;
+    public GameObject turret1, turret2, turret3, turret4, turret5, enemy1, enemy2;
 
     public Transform startingPos;
     public Transform endingPos;
@@ -40,8 +40,14 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            var o = Instantiate(enemy, startingPos.position, startingPos.rotation);
+            var o = Instantiate(enemy1, startingPos.position, startingPos.rotation);
             o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            var o = Instantiate(enemy2, startingPos.position, startingPos.rotation);
+            o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
+        }
+
     }
 }
