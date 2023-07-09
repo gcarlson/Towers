@@ -360,6 +360,7 @@
 "Assets/EnemyHealth.cs"
 "Assets/EnemyNavMesh.cs"
 "Assets/GameManager.cs"
+"Assets/MineSpawner.cs"
 "Assets/NapalmController.cs"
 "Assets/SelectionManager.cs"
 "Assets/TurretController.cs"
