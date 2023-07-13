@@ -23,6 +23,8 @@ public class SelectionManager : MonoBehaviour
         {
             Destroy(selected.gameObject);
             selected = null;
+            icon.SetActive(false);
+            text.text = "";
         }
         else
         {
@@ -34,25 +36,22 @@ public class SelectionManager : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     selected = hit.collider.gameObject.GetComponent<TurretController>();
+                    if (selected)
+                    {
+                        icon.SetActive(true);
+                        GloryShot.transform.position = selected.transform.position + new Vector3(4, 4, 4);
+                    }
+                    else
+                    {
+                        icon.SetActive(false);
+                        text.text = "";
+                    }
                 }
-                else
-                {
-                    selected = null;
-                }
-
             }
         }
         if (selected)
         {
-            icon.SetActive(true);
             text.text = "Damage Dealt: " + selected.damageTotal + "";
-            //-20, 181, -38, 76
-            GloryShot.transform.SetPositionAndRotation(new Vector3(selected.transform.position.x + 4, selected.transform.position.y + 4, selected.transform.position.z + 4), new Quaternion(-20,181,-38,-76));
-        } else
-        {
-            icon.SetActive(false);
-            text.text = "";
-        }
-
+         } 
     }
 }
