@@ -6,6 +6,7 @@ using UnityEngine;
 public class TurretPlacer : MonoBehaviour
 {
     private int collisions = 0;
+    public int value = 5;
     private Renderer cubeRenderer;
     private Color initialColor;
     public int width, height;
@@ -26,6 +27,7 @@ public class TurretPlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && canPlace)
         {
+            GameManager.AddMoney(0 - value);
             this.enabled = false;
         }
         var v3 = Input.mousePosition;

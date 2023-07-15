@@ -7,7 +7,7 @@ public class SelectionManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public TurretController selected;
-    public Camera GloryShot;
+    public GameObject GloryShot;
     public GameObject icon;
 
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class SelectionManager : MonoBehaviour
                     if (selected)
                     {
                         icon.SetActive(true);
-                        GloryShot.transform.position = selected.transform.position + new Vector3(4, 4, 4);
+                        GloryShot.transform.position = selected.transform.position;
                     }
                     else
                     {
@@ -52,6 +52,14 @@ public class SelectionManager : MonoBehaviour
         if (selected)
         {
             text.text = "Damage Dealt: " + selected.damageTotal + "";
-         } 
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (selected)
+        {
+            GloryShot.transform.Rotate(0, 5 * Time.deltaTime, 0);
+        }
     }
 }

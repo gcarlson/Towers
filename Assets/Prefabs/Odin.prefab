@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3045537334070869680}
   - component: {fileID: 3201901618664992783}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: Odin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 1487119330473073911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6823051583591843178}
@@ -196,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c9d6fa2e91bd9fa4da10123e58f1e7fc, type: 2}
+  - {fileID: 2100000, guid: d2a17826699246e46ad7b847e3c8601e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e84798dfd71a240a8e6e7374f4b3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 3
-  height: 3
+  width: 2
+  height: 2
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 256

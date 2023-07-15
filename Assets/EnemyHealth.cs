@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private Slider hpSlider;
     public int hp = 100;
     public int maxHp = 100;
+    public int value = 5;
     public Canvas canvas;
 
     public int Damage(int damage)
@@ -20,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
         //text.text = hp + "";
         if (hp <= 0)
         {
+            GameManager.AddMoney(value);
             Destroy(gameObject);
         }
         return damage;

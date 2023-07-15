@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,17 +20,35 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public GameObject turret1, turret2, turret3, turret4, turret5, turret6, enemy1, enemy2;
-    
+    public GameObject turret1, turret2, turret3, turret4, turret5, turret6;
+    public GameObject[] enemies;
     public Wave[] waves;
-    public Transform[] startingPos;
+    public static List<Transform> startingPos;
+    public static int money = 100;
+    public TextMeshProUGUI mText;
+    public static TextMeshProUGUI moneyText;
     public Transform endingPos;
     public int currentWave = 0;
+    public TextMeshProUGUI text;
+    public Transform[] portals;
+
+    public static void AddMoney(int cash)
+    {
+        money += cash;
+        moneyText.text = "Money: $" + money;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startingPos = new List<Transform>();
+        foreach (Transform portal in portals)
+        {
+            startingPos.Add(portal);
+        }
+        moneyText = mText;
+        moneyText.text = "Money: $" + money;
+
     }
 
     // Update is called once per frame
@@ -63,33 +82,54 @@ public class GameManager : MonoBehaviour
         {
             var coroutine = SpawnWave(currentWave);
             StartCoroutine(coroutine);
+            text.text = "Round: " + (currentWave + 1);
             currentWave = (currentWave + 1) % waves.Length;
+            
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            var o = Instantiate(enemy1, startingPos[Random.Range(0, startingPos.Length)].position, startingPos[0].rotation);
+            var o = Instantiate(enemies[0], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
             o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            var o = Instantiate(enemy2, startingPos[Random.Range(0, startingPos.Length)].position, startingPos[0].rotation);
+            var p = startingPos[Random.Range(0, startingPos.Count)].position;
+            p.y = 0.4333333f;
+            var o = Instantiate(enemies[1], p, Quaternion.LookRotation(new Vector3(endingPos.position.x - p.x, 0.0f, endingPos.position.z - p.z).normalized));
+            o.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(endingPos.position);
+            UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
+            o.GetComponent<UnityEngine.AI.NavMeshAgent>().CalculatePath(endingPos.position, path);
+
+            o.GetComponent<UnityEngine.AI.NavMeshAgent>().SetPath(path);
+            print("ddd remaining distance: " + o.GetComponent<UnityEngine.AI.NavMeshAgent>().pathStatus + " " + PathDistance(path));
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            var o = Instantiate(enemies[2], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
             o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
         }
 
+    }
+
+    private float PathDistance(UnityEngine.AI.NavMeshPath path)
+    {
+        float distance = 0.0f;
+        for (int i = 0; i < path.corners.Length - 1; ++i)
+        {
+            distance += Vector3.Distance(path.corners[i], path.corners[i + 1]);
+        }
+
+        return distance;
     }
 
     private IEnumerator SpawnWave(int number)
     {
         foreach (Cluster c in waves[number].clusters)
         {
-            yield return new WaitForSeconds(c.startDelay);
-            var o = Instantiate(c.type == 0 ? enemy1 : enemy2, startingPos[Random.Range(0, startingPos.Length)].position, startingPos[0].rotation);
-            o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
-
-            for (int i = 1; i < c.number; i++)
+            for (int i = 0; i < c.number; i++)
             {
-                yield return new WaitForSeconds(c.spacing);
-                var p = Instantiate(c.type == 0 ? enemy1 : enemy2, startingPos[Random.Range(0, startingPos.Length)].position, startingPos[0].rotation);
+                yield return new WaitForSeconds(i == 0 ? c.startDelay : c.spacing);
+                var p = Instantiate(enemies[c.type], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
                 p.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
             }
         }
