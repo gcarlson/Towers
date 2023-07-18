@@ -2845,8 +2845,8 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 1
-  m_VoxelSize: 0.3
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.26666668
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 71b68f900d811d04c85d4cdcd5cb417c, type: 2}
 --- !u!1 &717857250
@@ -3743,6 +3743,7 @@ MonoBehaviour:
   turret4: {fileID: 1487119330473073911, guid: a9a53b7d5e23a7f49a4b5899c39ee3ca, type: 3}
   turret5: {fileID: 1487119330473073911, guid: 56ae950b9a418cd47b1f54d63bd173d1, type: 3}
   turret6: {fileID: 1487119330473073911, guid: 2d5f6cfeab874604a9128d81fffd3cab, type: 3}
+  turret7: {fileID: 1487119330473073911, guid: 8c0d29e2c744e7c48a12d557e226cc41, type: 3}
   enemies:
   - {fileID: 4683923698613847341, guid: 9738fcab36b1168448877a224d8172b6, type: 3}
   - {fileID: 4683923698613847341, guid: 9f4ef75e3fb28db47805b1b0aed53d54, type: 3}
@@ -5576,6 +5577,10 @@ PrefabInstance:
     - target: {fileID: 5126450325541033941, guid: b59f1019b92adb34dbde2a831462f928, type: 3}
       propertyPath: m_Name
       value: Tree (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5126450325541033941, guid: b59f1019b92adb34dbde2a831462f928, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b59f1019b92adb34dbde2a831462f928, type: 3}

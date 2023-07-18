@@ -84,13 +84,27 @@ public class TurretController : MonoBehaviour
 
         //return (GameObject) targets[Random.Range(0, targets.Count)];
     }
+    public virtual bool canShoot()
+    {
+        return true;
+    }
+   public virtual void bulletSetup(GameObject o, GameObject target)
+    {
+        var v = o.transform.eulerAngles;
+        v.y += Random.Range(0 - spread, spread);
+        o.transform.eulerAngles = v;
+        o.GetComponent<BulletController>().owner = this;
+        o.GetComponent<Rigidbody>().velocity = (speed + Random.Range(0 - speedRange, speedRange)) * o.transform.forward.normalized;
+        //o.GetComponent<Rigidbody>().velocity = speed * lookPos.normalized;
+        Destroy(o, lifespan);
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextShot)
+        if (Time.time > nextShot && canShoot())
         {
-            nextShot += 1.0f / fireRate;
+            //nextShot += 1.0f / fireRate;
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             var inRangeEnemies = new ArrayList();
             foreach (var enemy in enemies)
@@ -103,25 +117,22 @@ public class TurretController : MonoBehaviour
             
             if (inRangeEnemies.Count > 0)
             {
+                nextShot = Time.time + 1.0f / fireRate;
                 GameObject targetEnemy = PickTarget(inRangeEnemies);
                 var targetPos = targetEnemy.transform.position;
                 var lookPos = targetPos - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
-                turret.transform.rotation = rotation;
-
+                if (turret)
+                {
+                    turret.transform.rotation = rotation;
+                }
                 if (projectile)
                 {
                     for (int i = 0; i < multishot; i++)
                     {
                         var o = Instantiate(bullet, transform.position, rotation);
-                        var v = o.transform.eulerAngles;
-                        v.y += Random.Range(0 - spread, spread);
-                        o.transform.eulerAngles = v;
-                        o.GetComponent<BulletController>().owner = this;
-                        o.GetComponent<Rigidbody>().velocity = (speed + Random.Range(0 - speedRange, speedRange)) * o.transform.forward.normalized;
-                        //o.GetComponent<Rigidbody>().velocity = speed * lookPos.normalized;
-                        Destroy(o, lifespan);
+                        bulletSetup(o, targetEnemy);
                     }
                 } else
                 {

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public GameObject turret1, turret2, turret3, turret4, turret5, turret6;
+    public GameObject turret1, turret2, turret3, turret4, turret5, turret6, turret7;
     public GameObject[] enemies;
     public Wave[] waves;
     public static List<Transform> startingPos;
@@ -77,6 +77,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Instantiate(turret6);
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Instantiate(turret7);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
