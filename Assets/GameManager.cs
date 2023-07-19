@@ -112,6 +112,12 @@ public class GameManager : MonoBehaviour
             var o = Instantiate(enemies[2], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
             o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
         }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            var o = Instantiate(enemies[3], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
+            o.GetComponent<HexMover>().pos = new Vector2Int(45, 33);
+        }
+
 
     }
 

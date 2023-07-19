@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OdinController : TurretController
 {
-    public int birdsReady = 2;
+    public int birdsReady = 0;
 
     public override bool canShoot()
     {

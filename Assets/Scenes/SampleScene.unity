@@ -1801,6 +1801,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -2559,6 +2563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -3012,6 +3020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -3239,6 +3251,10 @@ PrefabInstance:
     - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_Name
       value: Cube (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
@@ -3660,6 +3676,7 @@ GameObject:
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   - component: {fileID: 963194231}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3756,6 +3773,7 @@ MonoBehaviour:
   - {fileID: 4683923698613847341, guid: 9738fcab36b1168448877a224d8172b6, type: 3}
   - {fileID: 4683923698613847341, guid: 9f4ef75e3fb28db47805b1b0aed53d54, type: 3}
   - {fileID: 4683923698613847341, guid: fb28199a41e82c348b5c9f5a7167c7c9, type: 3}
+  - {fileID: 4683923698613847341, guid: 8d2bb33c47ec5cb4880fb4f17fab14d4, type: 3}
   waves:
   - clusters:
     - startDelay: 0
@@ -3819,6 +3837,18 @@ MonoBehaviour:
   maxX: 12
   minZ: -10
   maxZ: 10
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174f24803e163da469b37c4ba24dc464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &968268475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3940,6 +3970,10 @@ PrefabInstance:
     - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_Name
       value: Cube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
@@ -5755,6 +5789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -6496,6 +6534,10 @@ PrefabInstance:
     - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_Name
       value: Cube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1487119330473073911, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1487119330473073915, guid: dc21c467b87a02d4aabbd87bdd817844, type: 3}
       propertyPath: m_RootOrder
