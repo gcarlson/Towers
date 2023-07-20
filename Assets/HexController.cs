@@ -35,10 +35,23 @@ public class HexController : MonoBehaviour
         }
         return opts[((int) Random.Range(0, 60.0f)) % opts.Count];
     }
+    public static Vector2Int getNearest(Vector3 p)
+    {
+        float h = 1.73205080757f;
+        int x = (int)(p.x * 2.0f / 3.0f + 0.5f);
+        if (x % 2 == 0)
+        {
+            return new Vector2Int(x + gridWidth / 2, (int)(p.z / h + 0.5f) + gridHeight / 2);
+        }
+        else
+        {
+            return new Vector2Int(x + gridWidth / 2, (int)((p.z - h / 2.0f) / h + 0.5f) + gridHeight / 2);
+        }
+    }
     public static Vector3 getPos(Vector2Int p)
     {
         float h = 1.73205080757f;
-        return new Vector3((p.x - gridWidth / 2) * 1.5f, 1.0f, (p.y - gridHeight / 2) * h + (p.x % 2 == 0 ? 0 : h / 2));
+        return new Vector3((p.x - gridWidth / 2) * 1.5f, 0.0f, (p.y - gridHeight / 2) * h + (p.x % 2 == 0 ? 0 : h / 2));
     }
     public static void addObstacle(int x, int y)
     {
@@ -46,6 +59,12 @@ public class HexController : MonoBehaviour
         obstacle[x + gridWidth / 2, y + gridHeight / 2] = true;
         computePaths();
     }
+
+    public static bool isObstructed(int x, int y)
+    {
+        return obstacle[x + gridWidth / 2, y + gridHeight / 2];
+    }
+
     public static List<Vector2Int> neighbors(int x, int y)
     {
         List<Vector2Int> l = new List<Vector2Int>();

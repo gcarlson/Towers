@@ -241,6 +241,8 @@ MonoBehaviour:
   value: 5
   width: 2
   height: 2
+  hexRenderer: {fileID: 4366440812874495185}
+  footprint: {fileID: 8583268667967608034}
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -527,8 +529,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
+--- !u!23 &4366440812874495185 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 392363250126079520, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
+  m_PrefabInstance: {fileID: 4172939668239168241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4769584828172992805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8924369356118307796, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
+  m_PrefabInstance: {fileID: 4172939668239168241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8583268667967608034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5689356829108938259, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
   m_PrefabInstance: {fileID: 4172939668239168241}
   m_PrefabAsset: {fileID: 0}

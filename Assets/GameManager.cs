@@ -114,8 +114,9 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            var o = Instantiate(enemies[3], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
-            o.GetComponent<HexMover>().pos = new Vector2Int(45, 33);
+            var pos = startingPos[Random.Range(0, startingPos.Count)];
+            var o = Instantiate(enemies[3], pos.position, pos.rotation);
+            o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
         }
 
 

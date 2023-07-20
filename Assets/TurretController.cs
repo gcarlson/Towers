@@ -69,7 +69,7 @@ public class TurretController : MonoBehaviour
                 foreach (var enemy in targets)
                 {
                     GameObject o = (GameObject)enemy;
-                    float d = o.GetComponent<UnityEngine.AI.NavMeshAgent>().remainingDistance;
+                    float d = o.GetComponent<HexMover>().distance;
                     if (d < closest)
                     {
                         closest = d;

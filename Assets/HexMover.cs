@@ -5,6 +5,7 @@ using UnityEngine;
 public class HexMover : MonoBehaviour
 {
     public Vector2Int pos;
+    public int distance = 100000;
     public float nextMove;
     public Vector3 target;
     public float moveTime = 1.0f;
@@ -18,8 +19,11 @@ public class HexMover : MonoBehaviour
     void Move()
     {
         pos = HexController.getNext(pos.x, pos.y);
+        distance = HexController.distance[pos.x, pos.y];
         transform.position = target;
+        
         target = HexController.getPos(pos);
+        transform.LookAt(target);
         //transform.position = HexController.getPos(pos);
         print("ddd pos: " + pos.x + " " + pos.y + " " + HexController.distance[pos.x, pos.y]);
 
