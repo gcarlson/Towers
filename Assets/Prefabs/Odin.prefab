@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 1487119330473073909}
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
-  - component: {fileID: 3045537334070869680}
   - component: {fileID: -5088196401850457290}
   m_Layer: 8
   m_Name: Odin
@@ -243,22 +242,6 @@ MonoBehaviour:
   footprint: {fileID: 8583268667967608034}
   hexes:
   - {x: 0, y: 0}
---- !u!208 &3045537334070869680
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487119330473073911}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &-5088196401850457290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +267,7 @@ MonoBehaviour:
   bullet: {fileID: 5913315479626666771, guid: 7990e81cc3eb3704d9fd3d29f412caeb, type: 3}
   damageTotal: 0
   melee: 0
-  birdsReady: 0
+  birdsReady: 2
 --- !u!1 &8450306562070701666
 GameObject:
   m_ObjectHideFlags: 0
