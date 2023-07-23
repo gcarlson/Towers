@@ -54,34 +54,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Instantiate(turret1);
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Instantiate(turret2);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Instantiate(turret3);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Instantiate(turret4);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Instantiate(turret5);
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Instantiate(turret6);
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Instantiate(turret7);
-        }
+        
         if (Input.GetKeyDown(KeyCode.P))
         {
             var coroutine = SpawnWave(currentWave);
