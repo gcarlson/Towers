@@ -3606,6 +3606,7 @@ MonoBehaviour:
   - {fileID: 4683923698613847341, guid: 9f4ef75e3fb28db47805b1b0aed53d54, type: 3}
   - {fileID: 4683923698613847341, guid: fb28199a41e82c348b5c9f5a7167c7c9, type: 3}
   - {fileID: 4683923698613847341, guid: 8d2bb33c47ec5cb4880fb4f17fab14d4, type: 3}
+  - {fileID: 4683923698613847341, guid: 0b5232d858477ec4ca41935c3092fc91, type: 3}
   waves:
   - clusters:
     - startDelay: 0

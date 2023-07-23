@@ -8,7 +8,7 @@ public class HexMover : MonoBehaviour
     public int distance = 100000;
     public float nextMove;
     public Vector3 target;
-    public float moveTime = 1.0f;
+    public float moveSpeed = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +32,10 @@ public class HexMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += (target - transform.position).normalized * Time.deltaTime / moveTime * 1.73205080757f;
+        transform.position += (target - transform.position).normalized * Time.deltaTime * moveSpeed * 1.73205080757f;
         if (Time.time > nextMove)
         {
-            nextMove += moveTime;
+            nextMove += 1.0f / moveSpeed;
             Move();
         }
     }

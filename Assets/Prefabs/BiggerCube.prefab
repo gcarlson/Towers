@@ -236,7 +236,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  footprint: {fileID: 3538402460292386690}
+  oddX: 0
+  oddY: 0
+  footprint: {fileID: 5181682952300190884}
+  hexes:
+  - {x: -1, y: 0}
+  - {x: -1, y: 1}
+  - {x: 0, y: -1}
+  - {x: 0, y: 0}
+  - {x: 0, y: 1}
+  - {x: 1, y: 0}
+  - {x: 1, y: 1}
 --- !u!114 &3201901618664992783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,10 +825,5 @@ PrefabInstance:
 --- !u!4 &303978729694272069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8924369356118307796, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
-  m_PrefabInstance: {fileID: 9218386499641518481}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3538402460292386690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5689356829108938259, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
   m_PrefabInstance: {fileID: 9218386499641518481}
   m_PrefabAsset: {fileID: 0}

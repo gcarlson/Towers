@@ -237,15 +237,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e84798dfd71a240a8e6e7374f4b3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hex: 1
   value: 5
-  width: 2
-  height: 2
-  hexRenderer: {fileID: 4366440812874495185}
+  oddX: 0
+  oddY: 0
   footprint: {fileID: 8583268667967608034}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 256
+  hexes:
+  - {x: 0, y: 0}
 --- !u!208 &3045537334070869680
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -529,11 +526,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
---- !u!23 &4366440812874495185 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 392363250126079520, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
-  m_PrefabInstance: {fileID: 4172939668239168241}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4769584828172992805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8924369356118307796, guid: f59a6229fdea4ac47bf32befaa324564, type: 3}
