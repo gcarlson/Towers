@@ -15,18 +15,33 @@ public class TurretPlacer : MonoBehaviour
     public bool oddY = false;
     public GameObject footprint;
     public Vector2Int[] hexes = { new Vector2Int(0, 0) };
+    public Vector3 centerOffset = new Vector3(0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
     {
+        print("ddd starting");
         initialColor = footprint.GetComponentInChildren<Renderer>().material.color;
+    }
+
+    Vector3Int oddq_to_cube(Vector2Int hex) {
+        int q = hex.x;
+        int r = hex.y - (hex.x - (hex.x & 1)) / 2;
+    return new Vector3Int(q, r, 0 - q - r);
+    }
+
+    Vector2Int cube_to_oddq(Vector3Int cube)
+    {
+        int q = cube.x;
+        int r = cube.y + (cube.x - (cube.x & 1)) / 2;
+        return new Vector2Int(q, r);
     }
 
     bool Obstructed()
     {
         foreach (Vector2Int v in hexes)
         {
-            if (HexController.isObstructed(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0)))
+            if (HexController.isObstructed(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1)))
             {
                 return true;
             }
@@ -34,22 +49,25 @@ public class TurretPlacer : MonoBehaviour
         return false;
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            centerOffset = Quaternion.AngleAxis(60f, Vector3.forward) * centerOffset;
+            for (int i = 0; i < hexes.Length; i++)
+            {
+                var res = oddq_to_cube(hexes[i]);
+                hexes[i] = cube_to_oddq(new Vector3Int(res.y, res.z, res.x) * -1);      
+            }
+            transform.Rotate(0, -60, 0);
+            print("ddd offset " + centerOffset);
+        }
         var v3 = Input.mousePosition;
         v3 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 6));
            float h = 1.73205080757f;
-        if (oddX)
-        {
-            v3.x -= 0.5f;
-        }
-        if (oddY)
-        {
-            v3.z -= h / 2;
-        }
+        v3.x -= centerOffset.x;
+        v3.z -= centerOffset.y;
             x = (int) (v3.x * 2.0f / 3.0f + 0.5f);
         if (x % 2 == 0)
         {
@@ -59,7 +77,7 @@ public class TurretPlacer : MonoBehaviour
         {
             y = (int)((v3.z - h / 2.0f) / h + 0.5f);
         }
-            transform.position = new Vector3(x * 1.5f + (oddX ? 0.5f : 0), 0, y * h + (x % 2 == 0 ? 0 : h / 2) + (oddY ? h / 2 : 0));
+            transform.position = new Vector3(x * 1.5f + centerOffset.x, 0, y * h + (x % 2 == 0 ? 0 : h / 2) + centerOffset.y);
         if (Obstructed())
         {
             canPlace = false;
@@ -85,7 +103,7 @@ public class TurretPlacer : MonoBehaviour
             GameManager.AddMoney(0 - value);
                 foreach (Vector2Int v in hexes)
                 {
-                HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0));
+                HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
             }
             this.enabled = false;
         }
