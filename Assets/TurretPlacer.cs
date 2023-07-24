@@ -64,18 +64,20 @@ public class TurretPlacer : MonoBehaviour
             print("ddd offset " + centerOffset);
         }
         var v3 = Input.mousePosition;
+        print("ddd pos: " + Input.mousePosition);
         v3 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 6));
-           float h = 1.73205080757f;
+        print("ddd hover: " + v3);
+        float h = 1.73205080757f;
         v3.x -= centerOffset.x;
         v3.z -= centerOffset.y;
-            x = (int) (v3.x * 2.0f / 3.0f + 0.5f);
+            x = Mathf.RoundToInt(v3.x * 2.0f / 3.0f);
         if (x % 2 == 0)
         {
-            y = (int)(v3.z / h + 0.5f);
+            y = Mathf.RoundToInt(v3.z / h);
         }
         else
         {
-            y = (int)((v3.z - h / 2.0f) / h + 0.5f);
+            y = Mathf.RoundToInt((v3.z - h / 2.0f) / h);
         }
             transform.position = new Vector3(x * 1.5f + centerOffset.x, 0, y * h + (x % 2 == 0 ? 0 : h / 2) + centerOffset.y);
         if (Obstructed())
