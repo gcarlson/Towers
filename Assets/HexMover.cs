@@ -5,7 +5,7 @@ using UnityEngine;
 public class HexMover : MonoBehaviour
 {
     public Vector2Int pos;
-    public int distance = 100000;
+    public int distance = 1000;
     public float nextMove;
     public Vector3 target;
     public float moveSpeed = 1.0f;
