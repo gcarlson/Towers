@@ -10,11 +10,16 @@ public class HexController : MonoBehaviour
     public static int gridWidth = 53;
     public static int gridHeight = 53;
     public GameObject fog;
+    public static GameObject fogPrefab;
+    private static List<Vector2Int> bases;
 
     // Start is called before the first frame update
     void Start()
     {
         print("ddd starting controller");
+        fogPrefab = fog;
+        bases = new List<Vector2Int>();
+        bases.Add(new Vector2Int(gridWidth / 2, gridHeight / 2));
         obstacle = new bool[gridWidth, gridHeight];
         fogs = new GameObject[gridWidth, gridHeight];
 
@@ -23,7 +28,6 @@ public class HexController : MonoBehaviour
             for (int j = 0; j < gridHeight; j++)
             {
                 obstacle[i, j] = false;
-                //visible[i, j] = true;
             }
         }
         distance = new int[gridWidth, gridHeight];
@@ -44,7 +48,7 @@ public class HexController : MonoBehaviour
         List<Vector2Int> opts = new List<Vector2Int>();
         foreach (Vector2Int n in neighbors(x, y))
         {
-            if (distance[n.x, n.y] < startDistance && !obstacle[n.x, n.y])
+            if (distance[n.x, n.y] == 0 || (distance[n.x, n.y] < startDistance && !obstacle[n.x, n.y]))
             {
                 opts.Add(n);
             }
@@ -61,6 +65,8 @@ public class HexController : MonoBehaviour
                 Destroy(fogs[i, j]);
             }
         }
+
+        bases.Add(v);
         obstacle[v.x, v.y] = true;
         foreach (Vector2Int w in neighbors(v.x, v.y))
         {
@@ -68,6 +74,31 @@ public class HexController : MonoBehaviour
         }
         computePaths();
     }
+
+    public static void destroyOutpost(Vector3 p)
+    {
+        Vector2Int v = getNearest(p);
+
+        for (int i = 35; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                var w = getPos(new Vector2Int(i, j));
+                w.y = 5.0f;
+                fogs[i, j] = Instantiate(fogPrefab, w, Quaternion.identity);
+            }
+        }
+
+        bases.Remove(v);
+        obstacle[v.x, v.y] = false;
+        foreach (Vector2Int w in neighbors(v.x, v.y))
+        {
+            obstacle[w.x, w.y] = false;
+        }
+        computePaths();
+    }
+
+
     public static Vector2Int getNearest(Vector3 p)
     {
         float h = 1.73205080757f;
@@ -158,8 +189,16 @@ public class HexController : MonoBehaviour
             }
         }
         List<Vector2Int> boundary = new List<Vector2Int>();
-        distance[gridWidth / 2, gridHeight / 2] = 0;
-        boundary.Add(new Vector2Int(gridWidth / 2, gridHeight / 2));
+
+        foreach (Vector2Int v in bases)
+        {
+            print("ddd base: " + v.x + " " + v.y);
+            foreach (Vector2Int n in neighbors(v.x, v.y))
+            {
+                distance[n.x, n.y] = 0;
+                boundary.Add(n);
+            }
+        }
 
         for (int i = 1;  boundary.Count > 0; i++)
         {

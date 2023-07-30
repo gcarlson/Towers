@@ -21,6 +21,7 @@ public class SelectionManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Delete))
         {
+            GameManager.AddMoney(selected.gameObject.GetComponent<TurretPlacer>().value / 2);
             Destroy(selected.gameObject);
             selected = null;
             icon.SetActive(false);
@@ -52,6 +53,7 @@ public class SelectionManager : MonoBehaviour
                         //icon.SetActive(true);
                         //GloryShot.transform.position = selected.transform.position;
                         HexController.spawnOutpost(clicked.transform.position);
+                        clicked.EnableOutpost();
                     }
                 }
             }
