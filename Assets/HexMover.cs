@@ -19,7 +19,7 @@ public class HexMover : MonoBehaviour
         nextMove = Time.time;
         target = HexController.getPos(pos);
         collider = GetComponent<SphereCollider>();
-        visible = HexController.visible[pos.x, pos.y];
+        visible = (HexController.fogs[pos.x, pos.y] == null);
         HPBar.SetActive(visible);
         collider.enabled = visible;
     }
@@ -30,7 +30,7 @@ public class HexMover : MonoBehaviour
         distance = HexController.distance[pos.x, pos.y];
         transform.position = target;
 
-        visible = HexController.visible[pos.x, pos.y];
+        visible = (HexController.fogs[pos.x, pos.y] == null);
         HPBar.SetActive(visible);
         collider.enabled = visible;
         target = HexController.getPos(pos);

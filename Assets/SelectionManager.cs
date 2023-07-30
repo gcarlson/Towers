@@ -46,6 +46,13 @@ public class SelectionManager : MonoBehaviour
                         icon.SetActive(false);
                         text.text = "";
                     }
+                    var clicked = hit.collider.gameObject.GetComponent<OutpostController>();
+                    if (clicked)
+                    {
+                        //icon.SetActive(true);
+                        //GloryShot.transform.position = selected.transform.position;
+                        HexController.spawnOutpost(clicked.transform.position);
+                    }
                 }
             }
         }
