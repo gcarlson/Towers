@@ -43,11 +43,11 @@ public class HexMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += (target - transform.position).normalized * Time.deltaTime * moveSpeed * 1.73205080757f;
+        transform.position += (target - transform.position).normalized * Time.deltaTime * (visible ? moveSpeed : 4.0f) * 1.73205080757f;
         if (Time.time > nextMove)
-        {
-            nextMove += 1.0f / moveSpeed;
+        {            
             Move();
+            nextMove += visible ? 1.0f / moveSpeed : 0.25f;
         }
     }
 }
