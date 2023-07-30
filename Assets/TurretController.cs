@@ -95,7 +95,6 @@ public class TurretController : MonoBehaviour
         o.transform.eulerAngles = v;
         o.GetComponent<BulletController>().owner = this;
         o.GetComponent<Rigidbody>().velocity = (speed + Random.Range(0 - speedRange, speedRange)) * o.transform.forward.normalized;
-        //o.GetComponent<Rigidbody>().velocity = speed * lookPos.normalized;
         Destroy(o, lifespan);
     }
 
@@ -104,12 +103,11 @@ public class TurretController : MonoBehaviour
     {
         if (Time.time > nextShot && canShoot())
         {
-            //nextShot += 1.0f / fireRate;
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             var inRangeEnemies = new ArrayList();
             foreach (var enemy in enemies)
             {
-                if (Vector3.Distance(transform.position, enemy.transform.position) <= range)
+                if (Vector3.Distance(transform.position, enemy.transform.position) <= range && enemy.GetComponent<HexMover>().visible)
                 {
                     inRangeEnemies.Add(enemy);
                 }

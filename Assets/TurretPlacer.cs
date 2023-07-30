@@ -65,7 +65,7 @@ public class TurretPlacer : MonoBehaviour
         }
         var v3 = Input.mousePosition;
         print("ddd pos: " + Input.mousePosition);
-        v3 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 6));
+        v3 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 60));
         print("ddd hover: " + v3);
         float h = 1.73205080757f;
         v3.x -= centerOffset.x;

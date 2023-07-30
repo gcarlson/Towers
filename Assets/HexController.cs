@@ -6,21 +6,38 @@ public class HexController : MonoBehaviour
 {
     public static bool[,] obstacle;
     public static int[,] distance;
+    public static bool[,] visible;
     public static int gridWidth = 53;
     public static int gridHeight = 53;
+    public GameObject fog;
+
     // Start is called before the first frame update
     void Start()
     {
         print("ddd starting controller");
         obstacle = new bool[gridWidth, gridHeight];
+        visible = new bool[gridWidth, gridHeight];
+
         for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridHeight; j++)
             {
                 obstacle[i, j] = false;
+                visible[i, j] = true;
             }
         }
         distance = new int[gridWidth, gridHeight];
+        computePaths();
+        for (int i = 35; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                visible[i, j] = false;
+                var v = getPos(new Vector2Int(i, j));
+                v.y = 5.0f;
+                Instantiate(fog, v, Quaternion.identity);
+            }
+        }
     }
     public static Vector2Int getNext(int x, int y)
     {
@@ -38,14 +55,14 @@ public class HexController : MonoBehaviour
     public static Vector2Int getNearest(Vector3 p)
     {
         float h = 1.73205080757f;
-        int x = (int)(p.x * 2.0f / 3.0f + 0.5f);
+        int x = Mathf.RoundToInt(p.x * 2.0f / 3.0f);
         if (x % 2 == 0)
         {
-            return new Vector2Int(x + gridWidth / 2, (int)(p.z / h + 0.5f) + gridHeight / 2);
+            return new Vector2Int(x + gridWidth / 2, Mathf.RoundToInt(p.z / h) + gridHeight / 2);
         }
         else
         {
-            return new Vector2Int(x + gridWidth / 2, (int)((p.z - h / 2.0f) / h + 0.5f) + gridHeight / 2);
+            return new Vector2Int(x + gridWidth / 2, Mathf.RoundToInt((p.z - h / 2.0f) / h) + gridHeight / 2);
         }
     }
     public static Vector3 getPos(Vector2Int p)
@@ -62,7 +79,7 @@ public class HexController : MonoBehaviour
 
     public static bool isObstructed(int x, int y)
     {
-        return obstacle[x + gridWidth / 2, y + gridHeight / 2];
+        return obstacle[x + gridWidth / 2, y + gridHeight / 2] || !visible[x + gridWidth / 2, y + gridHeight / 2];
     }
 
     public static List<Vector2Int> neighbors(int x, int y)
