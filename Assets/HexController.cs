@@ -12,6 +12,7 @@ public class HexController : MonoBehaviour
     public GameObject fog;
     public static GameObject fogPrefab;
     private static List<Vector2Int> bases;
+    public GameObject mainBase;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,8 @@ public class HexController : MonoBehaviour
         print("ddd starting controller");
         fogPrefab = fog;
         bases = new List<Vector2Int>();
-        bases.Add(new Vector2Int(gridWidth / 2, gridHeight / 2));
+        //bases.Add(new Vector2Int(gridWidth / 2, gridHeight / 2));
+        bases.Add(getNearest(mainBase.transform.position));
         obstacle = new bool[gridWidth, gridHeight];
         fogs = new GameObject[gridWidth, gridHeight];
 

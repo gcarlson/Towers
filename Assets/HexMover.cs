@@ -37,7 +37,6 @@ public class HexMover : MonoBehaviour
         transform.LookAt(target);
         //transform.position = HexController.getPos(pos);
         print("ddd pos: " + pos.x + " " + pos.y + " " + HexController.distance[pos.x, pos.y]);
-
     }
 
     // Update is called once per frame

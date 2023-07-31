@@ -25,6 +25,7 @@ public class TestButton : MonoBehaviour
 
     public void click()
     {
+        print("ddd clicked");
         Instantiate(turret);
     }
 }
