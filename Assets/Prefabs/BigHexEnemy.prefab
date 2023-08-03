@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pos: {x: 0, y: 0}
+  visible: 0
   distance: 1000
   nextMove: 0
   target: {x: 0, y: 0, z: 0}

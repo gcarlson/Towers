@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
@@ -7,8 +8,11 @@ public class SelectionManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public TurretController selected;
+    public GameObject turretBar;
     public GameObject GloryShot;
     public GameObject icon;
+    public Dropdown dropdown;
+    public TMPro.TMP_Dropdown dd;
 
     // Start is called before the first frame update
     void Start()
@@ -36,16 +40,21 @@ public class SelectionManager : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    selected = hit.collider.gameObject.GetComponent<TurretController>();
+                    var s = hit.collider.gameObject.GetComponent<TurretController>();
+                    if (s) { selected = s; }
+//                    selected = hit.collider.gameObject.GetComponent<TurretController>();
                     if (selected)
                     {
-                        icon.SetActive(true);
+                        dd.value = GetDropDownIndex(selected.priority);
+                        turretBar.SetActive(true);
+                        //icon.SetActive(true);
                         GloryShot.transform.position = selected.transform.position;
                     }
                     else
                     {
-                        icon.SetActive(false);
-                        text.text = "";
+                        //turretBar.SetActive(false);
+                        //icon.SetActive(false);
+                        //text.text = "";
                     }
                     var clicked = hit.collider.gameObject.GetComponent<OutpostController>();
                     if (clicked)
@@ -62,6 +71,43 @@ public class SelectionManager : MonoBehaviour
         {
             text.text = "Damage Dealt: " + selected.damageTotal + "";
         }
+    }
+
+    public void SetPriority(int priority)
+    {
+        print("ddd prio: " + priority);
+        if (selected)
+        {
+            switch (priority)
+            {
+                case 0:
+                    print("ddd prio first");
+                    selected.priority = TurretController.Priority.FIRST;
+                    break;
+                case 2:
+                    print("ddd prio strong");
+                    selected.priority = TurretController.Priority.STRONG;
+                    break;
+                case 3:
+                    print("ddd prio weak");
+                    selected.priority = TurretController.Priority.WEAK;
+                    break;
+                case 4:
+                    print("ddd prio close");
+                    selected.priority = TurretController.Priority.CLOSE;
+                    break;
+                case 5:
+                default:
+                    print("ddd prio random");
+                    selected.priority = TurretController.Priority.RANDOM;
+                    break;
+            }
+        }
+    }
+
+    int GetDropDownIndex(TurretController.Priority priority)
+    {
+        return (new[] { 0, 4, 2, 5, 3 })[(int) priority];
     }
 
     void FixedUpdate()

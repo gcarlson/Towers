@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    public enum Priority { FIRST, CLOSE, STRONG, RANDOM };
+    public enum Priority { FIRST, CLOSE, STRONG, RANDOM, WEAK };
     public Priority priority = Priority.FIRST;
     public int multishot = 1;
     public float speed = 30.0f;
@@ -88,6 +88,15 @@ public class TurretController : MonoBehaviour
     {
         return true;
     }
+
+    public virtual void shoot(GameObject target, Quaternion rotation)
+    {
+        for (int i = 0; i < multishot; i++)
+        {
+            var o = Instantiate(bullet, transform.position, rotation);
+            bulletSetup(o, target);
+        }
+    }
    public virtual void bulletSetup(GameObject o, GameObject target)
     {
         var v = o.transform.eulerAngles;
@@ -127,11 +136,7 @@ public class TurretController : MonoBehaviour
                 }
                 if (projectile)
                 {
-                    for (int i = 0; i < multishot; i++)
-                    {
-                        var o = Instantiate(bullet, transform.position, rotation);
-                        bulletSetup(o, targetEnemy);
-                    }
+                    shoot(targetEnemy, rotation);
                 } else
                 {
                     var o = Instantiate(bullet, targetPos + new Vector3(Random.Range(0 - spread, spread), 0.0f, Random.Range(0 - spread, spread)), rotation);
