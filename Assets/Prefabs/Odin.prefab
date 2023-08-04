@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
   - component: {fileID: -5088196401850457290}
+  - component: {fileID: 5250218088082945685}
   m_Layer: 8
   m_Name: Odin
   m_TagString: Untagged
@@ -242,6 +243,7 @@ MonoBehaviour:
   footprint: {fileID: 8583268667967608034}
   hexes:
   - {x: 0, y: 0}
+  centerOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &-5088196401850457290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +270,23 @@ MonoBehaviour:
   damageTotal: 0
   melee: 0
   birdsReady: 2
+--- !u!114 &5250218088082945685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487119330473073911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ce086cdb097b8439aadca5111d703b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  ammos:
+  - {fileID: -5088196401850457290}
+  names:
+  - Default (Explosive)
 --- !u!1 &8450306562070701666
 GameObject:
   m_ObjectHideFlags: 0

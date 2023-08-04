@@ -525,6 +525,7 @@ MonoBehaviour:
   icon: {fileID: 229709768254719358}
   dropdown: {fileID: 0}
   dd: {fileID: 1685844588613766622}
+  ammoDropdown: {fileID: 5474603730698394771}
 --- !u!114 &229709767551006998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6897,7 +6898,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 229709767551006999}
         m_TargetAssemblyTypeName: SelectionManager, Assembly-CSharp
-        m_MethodName: SetPriority
+        m_MethodName: SetAmmo
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
   - component: {fileID: 3201901618664992783}
+  - component: {fileID: 7681604302348737200}
   m_Layer: 8
   m_Name: ShotgunTurret
   m_TagString: Untagged
@@ -249,6 +250,7 @@ MonoBehaviour:
   footprint: {fileID: 3546285573113594290}
   hexes:
   - {x: 0, y: 0}
+  centerOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &3201901618664992783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +276,23 @@ MonoBehaviour:
   bullet: {fileID: 5913315479626666771, guid: 2967e2756a54b894fbe68839a37a9ebe, type: 3}
   damageTotal: 0
   melee: 0
+--- !u!114 &7681604302348737200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487119330473073911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ce086cdb097b8439aadca5111d703b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  ammos:
+  - {fileID: 3201901618664992783}
+  names:
+  - Default (Ballistic)
 --- !u!1001 &9205999843044779937
 PrefabInstance:
   m_ObjectHideFlags: 0

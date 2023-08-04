@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
   - component: {fileID: 3201901618664992783}
+  - component: {fileID: 6142059930557843511}
   m_Layer: 8
   m_Name: BiggerCube
   m_TagString: Untagged
@@ -247,7 +248,7 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 1, y: 0}
   - {x: 1, y: -1}
-  centerOffset: {x: 0, y: 0}
+  centerOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &3201901618664992783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +274,23 @@ MonoBehaviour:
   bullet: {fileID: 4251504539131477505, guid: 46638b15044064b47862cbcbb89b37ff, type: 3}
   damageTotal: 0
   melee: 0
+--- !u!114 &6142059930557843511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487119330473073911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ce086cdb097b8439aadca5111d703b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  ammos:
+  - {fileID: 3201901618664992783}
+  names:
+  - Default (Explosive)
 --- !u!1 &5181682952300190884
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,14 @@ using TMPro;
 public class SelectionManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public TurretController selected;
+    public AmmoSelecter selected;
     public GameObject turretBar;
     public GameObject GloryShot;
     public GameObject icon;
     public Dropdown dropdown;
     public TMPro.TMP_Dropdown dd;
+    public TMPro.TMP_Dropdown ammoDropdown;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,14 +43,21 @@ public class SelectionManager : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    var s = hit.collider.gameObject.GetComponent<TurretController>();
+                    var s = hit.collider.gameObject.GetComponent<AmmoSelecter>();
                     if (s) { selected = s; }
 //                    selected = hit.collider.gameObject.GetComponent<TurretController>();
                     if (selected)
                     {
-                        dd.value = GetDropDownIndex(selected.priority);
+                        dd.value = GetDropDownIndex(selected.GetTurret().priority);
+                        List<string> options = new List<string>();
+                        foreach (string option in selected.names)
+                        {
+                            options.Add(option); // Or whatever you want for a label
+                        }
+                        ammoDropdown.ClearOptions();
+                        ammoDropdown.AddOptions(options);
+                        ammoDropdown.value = selected.selected;
                         turretBar.SetActive(true);
-                        //icon.SetActive(true);
                         GloryShot.transform.position = selected.transform.position;
                     }
                     else
@@ -70,7 +79,7 @@ public class SelectionManager : MonoBehaviour
         }
         if (selected)
         {
-            text.text = "Damage Dealt: " + selected.damageTotal + "";
+            text.text = "Damage Dealt: " + selected.GetTurret().damageTotal + "";
         }
     }
 
@@ -83,27 +92,34 @@ public class SelectionManager : MonoBehaviour
             {
                 case 0:
                     print("ddd prio first");
-                    selected.priority = TurretController.Priority.FIRST;
+                    selected.GetTurret().priority = TurretController.Priority.FIRST;
                     break;
                 case 2:
                     print("ddd prio strong");
-                    selected.priority = TurretController.Priority.STRONG;
+                    selected.GetTurret().priority = TurretController.Priority.STRONG;
                     break;
                 case 3:
                     print("ddd prio weak");
-                    selected.priority = TurretController.Priority.WEAK;
+                    selected.GetTurret().priority = TurretController.Priority.WEAK;
                     break;
                 case 4:
                     print("ddd prio close");
-                    selected.priority = TurretController.Priority.CLOSE;
+                    selected.GetTurret().priority = TurretController.Priority.CLOSE;
                     break;
                 case 5:
                 default:
                     print("ddd prio random");
-                    selected.priority = TurretController.Priority.RANDOM;
+                    selected.GetTurret().priority = TurretController.Priority.RANDOM;
                     break;
             }
         }
+    }
+
+    public void SetAmmo(int ammo)
+    {
+        print("ddd ammo " + ammo);
+        selected.SetAmmo(ammo);
+        dd.value = GetDropDownIndex(selected.GetTurret().priority);
     }
 
     int GetDropDownIndex(TurretController.Priority priority)

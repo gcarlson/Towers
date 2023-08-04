@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
   - component: {fileID: 1576612952068981060}
+  - component: {fileID: 9017216352145098459}
   m_Layer: 8
   m_Name: PulseCube
   m_TagString: Untagged
@@ -294,6 +295,23 @@ MonoBehaviour:
   damageTotal: 0
   melee: 0
   burstCount: 3
+--- !u!114 &9017216352145098459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487119330473073911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ce086cdb097b8439aadca5111d703b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selected: 0
+  ammos:
+  - {fileID: 1576612952068981060}
+  names:
+  - Default (Energy)
 --- !u!1 &5448319690998773143
 GameObject:
   m_ObjectHideFlags: 0
