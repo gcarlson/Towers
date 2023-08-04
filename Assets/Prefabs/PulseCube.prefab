@@ -159,9 +159,9 @@ GameObject:
   - component: {fileID: 1487119330473073909}
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
-  - component: {fileID: 5752180860017287700}
+  - component: {fileID: 1576612952068981060}
   m_Layer: 8
-  m_Name: LazorCube
+  m_Name: PulseCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8b35551615aa75f47bec2be5cdb36001, type: 2}
+  - {fileID: 2100000, guid: 93d3415df4f8fa34bbcc0117b63d6f5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 1, y: 0}
   centerOffset: {x: 0.5, y: 0.8660254, z: 0}
---- !u!114 &5752180860017287700
+--- !u!114 &1576612952068981060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,23 +277,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1487119330473073911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74235283b3590554ba7d8199ce33cbeb, type: 3}
+  m_Script: {fileID: 11500000, guid: b15838226c5636b4a950a163ae87d4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 2
+  priority: 0
   multishot: 1
-  speed: 0
+  speed: 30
   lifespan: 3
-  fireRate: 0.8
+  fireRate: 1
   speedRange: 0
   spread: 0
   range: 20
   projectile: 1
   turret: {fileID: 1188765609489209251}
-  bullet: {fileID: 3720869708237099356, guid: 48f98d5556f6281468efc52db83eeb97, type: 3}
+  bullet: {fileID: 5913315479626666771, guid: b7d65a60f9b2a8b499c36347ba3afdd9, type: 3}
   damageTotal: 0
   melee: 0
-  lightning: {fileID: 5993636908821958387, guid: 1f8dfed435b53e84698939ab4b75ecc8, type: 3}
+  burstCount: 3
 --- !u!1 &5448319690998773143
 GameObject:
   m_ObjectHideFlags: 0

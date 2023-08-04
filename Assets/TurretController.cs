@@ -53,12 +53,25 @@ public class TurretController : MonoBehaviour
                 }
                 return best;
             case Priority.STRONG:
-                closest = -1.0f; ;
+                closest = -1.0f;
                 foreach (var enemy in targets)
                 {
                     GameObject o = (GameObject)enemy;
                     float d = o.GetComponent<EnemyHealth>().hp;
                     if (d > closest)
+                    {
+                        closest = d;
+                        best = o;
+                    }
+                }
+                return best;
+            case Priority.WEAK:
+                //closest = -1.0f;
+                foreach (var enemy in targets)
+                {
+                    GameObject o = (GameObject)enemy;
+                    float d = o.GetComponent<EnemyHealth>().hp;
+                    if (d < closest)
                     {
                         closest = d;
                         best = o;
@@ -117,7 +130,7 @@ public class TurretController : MonoBehaviour
             foreach (var enemy in enemies)
             {
                 if (Vector3.Distance(transform.position, enemy.transform.position) <= range && enemy.GetComponent<HexMover>().visible)
-                {
+                {   
                     inRangeEnemies.Add(enemy);
                 }
             }

@@ -125,6 +125,12 @@ public class HexController : MonoBehaviour
         obstacle[x + gridWidth / 2, y + gridHeight / 2] = true;
         computePaths();
     }
+    public static void removeObstacle(int x, int y)
+    {
+        print("ddd removing obs pos: " + (x + gridWidth / 2) + " " + (y + gridHeight / 2));
+        obstacle[x + gridWidth / 2, y + gridHeight / 2] = false;
+        computePaths();
+    }
 
     public static bool isObstructed(int x, int y)
     {

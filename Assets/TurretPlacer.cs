@@ -49,6 +49,14 @@ public class TurretPlacer : MonoBehaviour
         return false;
     }
 
+    public void Delete()
+    {
+        foreach (Vector2Int v in hexes)
+        {
+            HexController.removeObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

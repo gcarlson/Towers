@@ -16,6 +16,11 @@ public class EnemyHealth : MonoBehaviour
 
     public int Damage(int damage)
     {
+        if (hp < 0)
+        {
+            print("ddd YOU ARE ALREADY DEAD");
+            return 0;
+        }
         hp-= damage;
         SetHealth();
         //text.text = hp + "";
@@ -23,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         {
             GameManager.AddMoney(value);
             Destroy(gameObject);
+            return 0 - damage;
         }
         return damage;
     }
