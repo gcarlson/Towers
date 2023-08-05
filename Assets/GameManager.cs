@@ -80,11 +80,6 @@ public class GameManager : MonoBehaviour
             o.GetComponent<UnityEngine.AI.NavMeshAgent>().SetPath(path);
             print("ddd remaining distance: " + o.GetComponent<UnityEngine.AI.NavMeshAgent>().pathStatus + " " + PathDistance(path));
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            var o = Instantiate(enemies[2], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
-            o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
-        }
         if (Input.GetKeyDown(KeyCode.T))
         {
             var pos = startingPos[Random.Range(0, startingPos.Count)];

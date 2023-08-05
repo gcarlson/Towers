@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -13,9 +14,15 @@ public class EnemyHealth : MonoBehaviour
     public int maxHp = 100;
     public int value = 5;
     public Canvas canvas;
+    public GameObject damageNumber;
 
     public int Damage(int damage)
     {
+        var o = Instantiate(damageNumber, transform.position, Quaternion.identity);
+        var t = Random.Range(0.0f, 360.0f);
+        o.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Cos(t), 0.0f, Mathf.Sin(t));
+        o.GetComponentInChildren<TextMeshProUGUI>().text = (damage + "");
+        Destroy(o, 1.0f);
         if (hp < 0)
         {
             print("ddd YOU ARE ALREADY DEAD");
