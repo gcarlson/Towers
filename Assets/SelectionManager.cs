@@ -44,11 +44,13 @@ public class SelectionManager : MonoBehaviour
                 if (Physics.Raycast(ray, out hit))
                 {
                     var s = hit.collider.gameObject.GetComponent<AmmoSelecter>();
+                    if (selected) { selected.GetTurret().rangeRing.SetActive(false); }
                     if (s) { selected = s; }
 //                    selected = hit.collider.gameObject.GetComponent<TurretController>();
                     if (selected)
                     {
                         dd.value = GetDropDownIndex(selected.GetTurret().priority);
+                        selected.GetTurret().rangeRing.SetActive(true);
                         List<string> options = new List<string>();
                         foreach (string option in selected.names)
                         {
@@ -118,8 +120,10 @@ public class SelectionManager : MonoBehaviour
     public void SetAmmo(int ammo)
     {
         print("ddd ammo " + ammo);
+        selected.GetTurret().rangeRing.SetActive(false);
         selected.SetAmmo(ammo);
         dd.value = GetDropDownIndex(selected.GetTurret().priority);
+        selected.GetTurret().rangeRing.SetActive(true);
     }
 
     int GetDropDownIndex(TurretController.Priority priority)

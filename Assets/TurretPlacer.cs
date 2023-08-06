@@ -11,8 +11,6 @@ public class TurretPlacer : MonoBehaviour
     private bool canPlace = false;
     private int x = 0;
     private int y = 0;
-    public bool oddX = false;
-    public bool oddY = false;
     public GameObject footprint;
     public Vector2Int[] hexes = { new Vector2Int(0, 0) };
     public Vector3 centerOffset = new Vector3(0, 0, 0);

@@ -16,14 +16,31 @@ public class TurretController : MonoBehaviour
     public bool projectile = true;
     public GameObject turret;
     public GameObject bullet;
-    private float nextShot = 0.0f;
+    protected float nextShot = 0.0f;
     public int damageTotal = 0;
     public bool melee = false;
+    public GameObject rangeRing;
+
 
     // Start is called before the first frame update
     void Start()
     {
         nextShot = Time.time;
+        /*var variableForPrefab = (GameObject)Resources.Load("RangeRing", typeof(GameObject));
+        rangeRing = Instantiate(variableForPrefab, transform);
+        rangeRing.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+        rangeRing.SetActive(false);*/
+    }
+
+    void OnEnable()
+    {
+        if (!rangeRing)
+        {
+            var variableForPrefab = (GameObject)Resources.Load("RangeRing", typeof(GameObject));
+            rangeRing = Instantiate(variableForPrefab, transform);
+            rangeRing.transform.localScale = new Vector3(range * 2, 0.01f, range * 2);
+            rangeRing.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -121,7 +138,7 @@ public class TurretController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         if (Time.time > nextShot && canShoot())
         {

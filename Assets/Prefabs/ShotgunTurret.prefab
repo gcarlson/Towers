@@ -246,8 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  oddX: 0
-  oddY: 0
   footprint: {fileID: 3546285573113594290}
   hexes:
   - {x: 0, y: 0}
@@ -267,16 +265,17 @@ MonoBehaviour:
   priority: 1
   multishot: 8
   speed: 30
-  lifespan: 3
+  lifespan: 1.5
   fireRate: 2
   speedRange: 2
   spread: 20
-  range: 20
+  range: 12
   projectile: 1
   turret: {fileID: 1188765609489209251}
   bullet: {fileID: 5913315479626666771, guid: 2967e2756a54b894fbe68839a37a9ebe, type: 3}
   damageTotal: 0
   melee: 0
+  rangeRing: {fileID: 0}
 --- !u!114 &7681604302348737200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,12 +314,13 @@ MonoBehaviour:
   fireRate: 2
   speedRange: 0
   spread: 20
-  range: 20
+  range: 15
   projectile: 1
   turret: {fileID: 1188765609489209251}
   bullet: {fileID: 5913315479626666771, guid: 0891acb7bc2c1964b8ec9337398a3df8, type: 3}
   damageTotal: 0
   melee: 0
+  rangeRing: {fileID: 0}
 --- !u!1001 &9205999843044779937
 PrefabInstance:
   m_ObjectHideFlags: 0
