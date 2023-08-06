@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  oddX: 0
-  oddY: 0
   footprint: {fileID: 615840039968128666}
   hexes:
   - {x: 0, y: 0}
@@ -173,12 +171,13 @@ MonoBehaviour:
   fireRate: 0.000001
   speedRange: 0
   spread: 0
-  range: 20
+  range: 2.5
   projectile: 1
   turret: {fileID: 1188765609489209251}
   bullet: {fileID: 5913315479626666771, guid: 2967e2756a54b894fbe68839a37a9ebe, type: 3}
   damageTotal: 0
   melee: 1
+  rangeRing: {fileID: 0}
 --- !u!114 &993165418445779555
 MonoBehaviour:
   m_ObjectHideFlags: 0

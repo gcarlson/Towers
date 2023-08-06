@@ -15,29 +15,40 @@ public class EnemyHealth : MonoBehaviour
     public int value = 5;
     public Canvas canvas;
     public GameObject damageNumber;
+    public float[] multipliers = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
 
-    public int Damage(int damage)
+
+    public int Damage(int damage, TurretController.Element type)
     {
+        int adjustedDamage = Mathf.CeilToInt(damage * multipliers[(int) type]);
         var o = Instantiate(damageNumber, transform.position, Quaternion.identity);
         var t = Random.Range(0.0f, 360.0f);
         o.GetComponent<Rigidbody>().velocity = new Vector3(Mathf.Cos(t), 0.0f, Mathf.Sin(t));
-        o.GetComponentInChildren<TextMeshProUGUI>().text = (damage + "");
+        o.GetComponentInChildren<TextMeshProUGUI>().text = (adjustedDamage + "");
+        if (adjustedDamage > damage)
+        {
+            o.GetComponentInChildren<TextMeshProUGUI>().color = new Color(0.1f, 0.15f, 0.5f, 1.0f);
+        }
+        else if (adjustedDamage < damage)
+        {
+            o.GetComponentInChildren<TextMeshProUGUI>().color = new Color(0.5f, 0.35f, 0.15f, 1.0f);
+        }
         Destroy(o, 1.0f);
         if (hp < 0)
         {
             print("ddd YOU ARE ALREADY DEAD");
             return 0;
         }
-        hp-= damage;
+        hp-= adjustedDamage;
         SetHealth();
         //text.text = hp + "";
         if (hp <= 0)
         {
             GameManager.AddMoney(value);
             Destroy(gameObject);
-            return 0 - damage;
+            return 0 - adjustedDamage;
         }
-        return damage;
+        return adjustedDamage;
     }
 
     // Start is called before the first frame update

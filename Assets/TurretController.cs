@@ -5,7 +5,9 @@ using UnityEngine;
 public class TurretController : MonoBehaviour
 {
     public enum Priority { FIRST, CLOSE, STRONG, RANDOM, WEAK };
+    public enum Element { BALLISTIC, EXPLOSIVE, ENERGY, MAGIC, CHEMICAL };
     public Priority priority = Priority.FIRST;
+    public Element damageType = Element.BALLISTIC;
     public int multishot = 1;
     public float speed = 30.0f;
     public float lifespan = 3.0f;

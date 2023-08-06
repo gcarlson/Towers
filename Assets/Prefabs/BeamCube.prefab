@@ -114,6 +114,7 @@ MonoBehaviour:
   damage: 1
   destroyOnHit: 0
   owner: {fileID: 0}
+  damageType: 0
 --- !u!1 &1188765609489209251
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,10 +160,10 @@ GameObject:
   - component: {fileID: 1487119330473073909}
   - component: {fileID: 1487119330473073910}
   - component: {fileID: -4453589728724974810}
-  - component: {fileID: 5752180860017287700}
   - component: {fileID: 5513194111982425744}
   - component: {fileID: -6700660495969540589}
   - component: {fileID: 7940843073724683760}
+  - component: {fileID: 8174601338906094072}
   m_Layer: 8
   m_Name: BeamCube
   m_TagString: Untagged
@@ -270,33 +271,6 @@ MonoBehaviour:
   - {x: 1, y: 0}
   - {x: -1, y: 0}
   centerOffset: {x: 0, y: 0.8660254, z: 0}
---- !u!114 &5752180860017287700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1487119330473073911}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74235283b3590554ba7d8199ce33cbeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  priority: 2
-  multishot: 1
-  speed: 0
-  lifespan: 3
-  fireRate: 0.8
-  speedRange: 0
-  spread: 0
-  range: 20
-  projectile: 1
-  turret: {fileID: 1188765609489209251}
-  bullet: {fileID: 3720869708237099356, guid: 48f98d5556f6281468efc52db83eeb97, type: 3}
-  damageTotal: 0
-  melee: 0
-  rangeRing: {fileID: 0}
-  lightning: {fileID: 5993636908821958387, guid: 1f8dfed435b53e84698939ab4b75ecc8, type: 3}
 --- !u!114 &5513194111982425744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,9 +287,11 @@ MonoBehaviour:
   ammos:
   - {fileID: -6700660495969540589}
   - {fileID: 7940843073724683760}
+  - {fileID: 8174601338906094072}
   names:
   - Focused Beam (Energy)
   - Flamethrower (Explosive)
+  - Ramping Beam (Energy)
 --- !u!114 &-6700660495969540589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
+  damageType: 2
   multishot: 1
   speed: 30
   lifespan: 3
@@ -358,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
+  damageType: 1
   multishot: 1
   speed: 30
   lifespan: 3
@@ -374,6 +352,40 @@ MonoBehaviour:
   flame: {fileID: 7944078706484307277, guid: f61951be524c2434ca975f45d9e816a7, type: 3}
   enemy: {fileID: 0}
   tickRate: 8
+--- !u!114 &8174601338906094072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487119330473073911}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30489e5fb21a951429f810f0e2b40bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  damageType: 2
+  multishot: 1
+  speed: 30
+  lifespan: 3
+  fireRate: 10
+  speedRange: 0
+  spread: 0
+  range: 30
+  projectile: 1
+  turret: {fileID: 1188765609489209251}
+  bullet: {fileID: 0}
+  damageTotal: 0
+  melee: 0
+  rangeRing: {fileID: 0}
+  enemy: {fileID: 0}
+  beamPrefab: {fileID: 5993636908821958387, guid: 1f8dfed435b53e84698939ab4b75ecc8, type: 3}
+  tickRate: 8
+  windup: 1
+  baseDamage: 3
+  damageScaling: 0.125
+  maxDamage: 20
 --- !u!1 &5448319690998773143
 GameObject:
   m_ObjectHideFlags: 0

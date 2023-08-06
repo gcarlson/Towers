@@ -25,7 +25,7 @@ public class FlameController : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapCapsule(transform.position - 4.8f * transform.right, transform.position + 5.8f * transform.right, 2.2f, m_LayerMask);
             foreach (var enemy in hitColliders)
             {
-                owner.damageTotal += enemy.gameObject.GetComponent<EnemyHealth>().Damage(2);
+                owner.damageTotal += enemy.gameObject.GetComponent<EnemyHealth>().Damage(2, TurretController.Element.EXPLOSIVE);
             }
         }
     }

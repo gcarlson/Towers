@@ -145,6 +145,7 @@ MonoBehaviour:
   damage: 3
   destroyOnHit: 1
   owner: {fileID: 0}
+  damageType: 3
   target: {fileID: 0}
   rigidBody: {fileID: 4686011012764144283}
   angleChangingSpeed: 7

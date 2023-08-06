@@ -24,7 +24,7 @@ public class NapalmController : MonoBehaviour
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.5f, m_LayerMask);
             foreach (var enemy in hitColliders)
             {
-                owner.damageTotal += enemy.gameObject.GetComponent<EnemyHealth>().Damage(2);
+                owner.damageTotal += enemy.gameObject.GetComponent<EnemyHealth>().Damage(2, TurretController.Element.EXPLOSIVE);
             }
         }
     }

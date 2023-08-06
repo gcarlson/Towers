@@ -80,6 +80,7 @@ MonoBehaviour:
   damage: 3
   destroyOnHit: 0
   owner: {fileID: 0}
+  damageType: 2
 --- !u!1 &4235909511397527760
 GameObject:
   m_ObjectHideFlags: 0

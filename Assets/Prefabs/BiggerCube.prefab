@@ -237,8 +237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  oddX: 0
-  oddY: 0
   footprint: {fileID: 5181682952300190884}
   hexes:
   - {x: -1, y: 0}
@@ -262,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
+  damageType: 1
   multishot: 1
   speed: 30
   lifespan: 2
@@ -274,6 +273,7 @@ MonoBehaviour:
   bullet: {fileID: 4251504539131477505, guid: 46638b15044064b47862cbcbb89b37ff, type: 3}
   damageTotal: 0
   melee: 0
+  rangeRing: {fileID: 0}
 --- !u!114 &6142059930557843511
 MonoBehaviour:
   m_ObjectHideFlags: 0

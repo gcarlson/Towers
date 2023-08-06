@@ -114,6 +114,7 @@ MonoBehaviour:
   damage: 1
   destroyOnHit: 0
   owner: {fileID: 0}
+  damageType: 0
 --- !u!1 &1188765609489209251
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,8 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  oddX: 1
-  oddY: 1
   footprint: {fileID: 5448319690998773143}
   hexes:
   - {x: 0, y: 0}
@@ -283,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 2
+  damageType: 3
   multishot: 1
   speed: 0
   lifespan: 3
@@ -295,6 +295,7 @@ MonoBehaviour:
   bullet: {fileID: 3720869708237099356, guid: 48f98d5556f6281468efc52db83eeb97, type: 3}
   damageTotal: 0
   melee: 0
+  rangeRing: {fileID: 0}
   lightning: {fileID: 5993636908821958387, guid: 1f8dfed435b53e84698939ab4b75ecc8, type: 3}
 --- !u!114 &5513194111982425744
 MonoBehaviour:
@@ -328,6 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 2
+  damageType: 2
   multishot: 1
   speed: 0
   lifespan: 3
@@ -340,6 +342,7 @@ MonoBehaviour:
   bullet: {fileID: 3720869708237099356, guid: 48f98d5556f6281468efc52db83eeb97, type: 3}
   damageTotal: 0
   melee: 0
+  rangeRing: {fileID: 0}
 --- !u!1 &5448319690998773143
 GameObject:
   m_ObjectHideFlags: 0

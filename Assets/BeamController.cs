@@ -23,7 +23,6 @@ public class BeamController : TurretController
     // Update is called once per frame
     public void Update()
     {
-
         if (enemy)
         {
             var l = beam.GetComponent<LineRenderer>();
@@ -38,7 +37,7 @@ public class BeamController : TurretController
                 turret.transform.rotation = rotation;
             if (Time.time > nextTick)
             {
-                damageTotal += enemy.GetComponent<EnemyHealth>().Damage(5);
+                damageTotal += enemy.GetComponent<EnemyHealth>().Damage(5, damageType);
                 nextTick = Time.time + 1.0f / tickRate;
             }
         } else

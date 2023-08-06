@@ -510,6 +510,13 @@ MonoBehaviour:
   value: 5
   canvas: {fileID: 2581009117557049686}
   damageNumber: {fileID: 4683923698613847341, guid: 8dd8680517173e74f9bb97192ccb1db8, type: 3}
+  multipliers:
+  - 1
+  - 1
+  - 2
+  - 1
+  - 1
+  - 1
 --- !u!114 &2603927883184820007
 MonoBehaviour:
   m_ObjectHideFlags: 0

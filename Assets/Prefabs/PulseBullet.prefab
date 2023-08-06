@@ -145,4 +145,5 @@ MonoBehaviour:
   damage: 5
   destroyOnHit: 0
   owner: {fileID: 0}
+  damageType: 2
   bullet: {fileID: 5913315479626666771}

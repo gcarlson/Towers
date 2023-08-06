@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 1
+  damageType: 0
   multishot: 8
   speed: 30
   lifespan: 1.5
@@ -308,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 1
+  damageType: 3
   multishot: 6
   speed: 20
   lifespan: 1.5

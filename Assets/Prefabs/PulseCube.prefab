@@ -114,6 +114,7 @@ MonoBehaviour:
   damage: 1
   destroyOnHit: 0
   owner: {fileID: 0}
+  damageType: 0
 --- !u!1 &1188765609489209251
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,8 +262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
-  oddX: 1
-  oddY: 1
   footprint: {fileID: 5448319690998773143}
   hexes:
   - {x: 0, y: 0}
@@ -282,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   priority: 0
+  damageType: 2
   multishot: 1
   speed: 30
   lifespan: 3
@@ -294,6 +294,7 @@ MonoBehaviour:
   bullet: {fileID: 5913315479626666771, guid: b7d65a60f9b2a8b499c36347ba3afdd9, type: 3}
   damageTotal: 0
   melee: 0
+  rangeRing: {fileID: 0}
   burstCount: 3
 --- !u!114 &9017216352145098459
 MonoBehaviour:

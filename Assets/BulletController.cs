@@ -6,7 +6,8 @@ public class BulletController : MonoBehaviour
 {
     public int damage = 1;
     public bool destroyOnHit = true;
-    public TurretController owner; 
+    public TurretController owner;
+    public TurretController.Element damageType;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("ddd bullet collided");
-        int d = other.gameObject.GetComponent<EnemyHealth>().Damage(damage);
+        int d = other.gameObject.GetComponent<EnemyHealth>().Damage(damage, damageType);
         owner.damageTotal += (d < 0 ? 0 - d : d);
         if (d < 0)
         {
