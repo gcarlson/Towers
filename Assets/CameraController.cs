@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Camera camera;
+    public new Camera camera;
     public float scrollSpeed = 3.0f;
     public float minSize = 5.0f;
     public float maxSize = 36.0f;

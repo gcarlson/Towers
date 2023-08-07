@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TurretPlacer : MonoBehaviour
 {
-    private int collisions = 0;
     public int value = 5;
     private Color initialColor;
     private bool canPlace = false;

@@ -12,13 +12,13 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public virtual void OnKill()
@@ -36,10 +36,10 @@ public class BulletController : MonoBehaviour
             OnKill();
         }
 
-            if (destroyOnHit)
-            {
-                Destroy(this.gameObject);
-            }
-        
+        if (destroyOnHit)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 }

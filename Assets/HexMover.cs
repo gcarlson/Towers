@@ -11,7 +11,7 @@ public class HexMover : MonoBehaviour
     public Vector3 target;
     public float moveSpeed = 1.0f;
     public GameObject HPBar;
-    private SphereCollider collider;
+    private new SphereCollider collider;
 
     // Start is called before the first frame update
     void Start()

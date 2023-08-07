@@ -21,9 +21,9 @@ public class BeamController : TurretController
     }
 
     // Update is called once per frame
-    public void Update()
+    public new void Update()
     {
-        if (enemy)
+        if (enemy && Vector3.Distance(transform.position, enemy.transform.position) <= range && enemy.GetComponent<HexMover>().visible)
         {
             var l = beam.GetComponent<LineRenderer>();
             l.positionCount = 2;

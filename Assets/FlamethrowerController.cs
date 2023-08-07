@@ -7,10 +7,9 @@ public class FlamethrowerController : TurretController
     public GameObject flame;
     public GameObject enemy;
     private GameObject beam;
-    private float nextTick = 0;
     public float tickRate = 8;
 
-            public override void shoot(GameObject target, Quaternion rotation)
+    public override void shoot(GameObject target, Quaternion rotation)
     {
         enemy = target;
         if (!beam)
@@ -22,9 +21,12 @@ public class FlamethrowerController : TurretController
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
-    base.Update();
-        if (        Time.time > nextShot && canShoot()) { Destroy(beam); }
-}
+        base.Update();
+        if (Time.time > nextShot && canShoot())
+        {
+            Destroy(beam);
+        }
+    }
 }
