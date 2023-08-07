@@ -20,18 +20,24 @@ public class HexMover : MonoBehaviour
         target = HexController.getPos(pos);
         collider = GetComponent<SphereCollider>();
         visible = (HexController.fogs[pos.x, pos.y] == null);
-        HPBar.SetActive(visible);
+        if (HPBar)
+        {
+            HPBar.SetActive(visible);
+        }
         collider.enabled = visible;
     }
 
-    void Move()
+    public virtual void Move()
     {
         pos = HexController.getNext(pos.x, pos.y);
         distance = HexController.distance[pos.x, pos.y];
         transform.position = target;
 
         visible = (HexController.fogs[pos.x, pos.y] == null);
-        HPBar.SetActive(visible);
+        if (HPBar)
+        {
+            HPBar.SetActive(visible);
+        }
         collider.enabled = visible;
         target = HexController.getPos(pos);
         transform.LookAt(target);

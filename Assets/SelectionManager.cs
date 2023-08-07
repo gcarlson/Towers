@@ -7,6 +7,7 @@ using TMPro;
 public class SelectionManager : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    public TextMeshProUGUI killsText;
     public AmmoSelecter selected;
     public GameObject turretBar;
     public GameObject GloryShot;
@@ -33,6 +34,7 @@ public class SelectionManager : MonoBehaviour
             selected = null;
             icon.SetActive(false);
             text.text = "";
+            killsText.text = "";
         }
         else
         {
@@ -82,6 +84,7 @@ public class SelectionManager : MonoBehaviour
         if (selected)
         {
             text.text = "Damage Dealt: " + selected.GetTurret().damageTotal + "";
+            killsText.text = "Kills: " + selected.GetTurret().kills + "";
         }
     }
 

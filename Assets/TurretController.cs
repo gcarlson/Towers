@@ -20,6 +20,7 @@ public class TurretController : MonoBehaviour
     public GameObject bullet;
     protected float nextShot = 0.0f;
     public int damageTotal = 0;
+    public int kills = 0;
     public bool melee = false;
     public GameObject rangeRing;
 

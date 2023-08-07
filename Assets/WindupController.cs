@@ -43,7 +43,16 @@ public class WindupController : TurretController
                 }
                 if (Time.time > nextTick)
                 {
-                    damageTotal += enemy.GetComponent<EnemyHealth>().Damage((int) damage, damageType);
+                    int d = enemy.GetComponent<EnemyHealth>().Damage((int)damage, damageType);
+                    if (d < 0)
+                    {
+                        kills++;
+                        damageTotal -= d;
+                    }
+                    else
+                    {
+                        damageTotal += d;
+                    }
                     nextTick = Time.time + 1.0f / tickRate;
                     if (damage < maxDamage)
                     {

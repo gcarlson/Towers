@@ -17,9 +17,19 @@ public class EnemyHealth : MonoBehaviour
     public GameObject damageNumber;
     public float[] multipliers = { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
 
-
-    public int Damage(int damage, TurretController.Element type)
+    public virtual void OnKill()
     {
+        print("ddd base onkill");
+    }
+
+    public virtual int Damage(int damage, TurretController.Element type)
+    {
+        //print("ddd damaging");
+        if (hp <= 0)
+        {
+            print("ddd YOU ARE ALREADY DEAD");
+            return 0;
+        }
         int adjustedDamage = Mathf.CeilToInt(damage * multipliers[(int) type]);
         var o = Instantiate(damageNumber, transform.position, Quaternion.identity);
         var t = Random.Range(0.0f, 360.0f);
@@ -34,16 +44,12 @@ public class EnemyHealth : MonoBehaviour
             o.GetComponentInChildren<TextMeshProUGUI>().color = new Color(0.5f, 0.35f, 0.15f, 1.0f);
         }
         Destroy(o, 1.0f);
-        if (hp < 0)
-        {
-            print("ddd YOU ARE ALREADY DEAD");
-            return 0;
-        }
         hp-= adjustedDamage;
         SetHealth();
         //text.text = hp + "";
         if (hp <= 0)
         {
+            OnKill();
             GameManager.AddMoney(value);
             Destroy(gameObject);
             return 0 - adjustedDamage;
@@ -54,14 +60,20 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetHealthMax();
-        SetHealth();
+        if (canvas)
+        {
+            SetHealthMax();
+            SetHealth();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        canvas.transform.rotation = Camera.main.transform.rotation;
+        if (canvas)
+        {
+            canvas.transform.rotation = Camera.main.transform.rotation;
+        }
     }
 
     public void SetHealthMax()

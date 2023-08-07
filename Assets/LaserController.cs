@@ -36,7 +36,12 @@ public class LaserController : TurretController
         for (int i = 0; i < targets.Count; i++)
         {
             l.SetPosition(i + 1, targets[i].transform.position);
-            damageTotal += targets[i].GetComponent<EnemyHealth>().Damage(15, damageType);
+            int x = targets[i].GetComponent<EnemyHealth>().Damage(15, damageType);
+            damageTotal += x;
+            if (x < 0)
+            {
+                kills++;
+            }
         }
         Destroy(o, 0.25f);
 

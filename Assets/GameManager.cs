@@ -65,20 +65,15 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            var o = Instantiate(enemies[0], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
-            o.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
+            var pos = startingPos[Random.Range(0, startingPos.Count)];
+            var o = Instantiate(enemies[1], pos.position, pos.rotation);
+            o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            var p = startingPos[Random.Range(0, startingPos.Count)].position;
-            p.y = 0.4333333f;
-            var o = Instantiate(enemies[1], p, Quaternion.LookRotation(new Vector3(endingPos.position.x - p.x, 0.0f, endingPos.position.z - p.z).normalized));
-            o.GetComponent<UnityEngine.AI.NavMeshAgent>().SetDestination(endingPos.position);
-            UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
-            o.GetComponent<UnityEngine.AI.NavMeshAgent>().CalculatePath(endingPos.position, path);
-
-            o.GetComponent<UnityEngine.AI.NavMeshAgent>().SetPath(path);
-            print("ddd remaining distance: " + o.GetComponent<UnityEngine.AI.NavMeshAgent>().pathStatus + " " + PathDistance(path));
+            var pos = startingPos[Random.Range(0, startingPos.Count)];
+            var o = Instantiate(enemies[2], pos.position, pos.rotation);
+            o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
         }
         if (Input.GetKeyDown(KeyCode.T))
         {

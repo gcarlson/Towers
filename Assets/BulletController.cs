@@ -8,6 +8,7 @@ public class BulletController : MonoBehaviour
     public bool destroyOnHit = true;
     public TurretController owner;
     public TurretController.Element damageType;
+    public GameObject createOnHit;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,14 @@ public class BulletController : MonoBehaviour
         owner.damageTotal += (d < 0 ? 0 - d : d);
         if (d < 0)
         {
+            owner.kills++;
             OnKill();
+        }
+        if (createOnHit)
+        {
+            var o = Instantiate(createOnHit, transform.position, transform.rotation);
+            o.GetComponent<BulletController>().owner = owner;
+            Destroy(o, 0.5f);
         }
 
         if (destroyOnHit)
