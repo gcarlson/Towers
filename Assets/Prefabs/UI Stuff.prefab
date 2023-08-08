@@ -481,22 +481,45 @@ MonoBehaviour:
   - clusters:
     - startDelay: 0
       spacing: 0.2
-      type: 0
+      type: 4
       number: 20
   - clusters:
     - startDelay: 0
       spacing: 0.5
-      type: 1
+      type: 3
       number: 30
   - clusters:
     - startDelay: 0
       spacing: 0.1
-      type: 1
+      type: 4
       number: 20
     - startDelay: 3
       spacing: 0.1
-      type: 0
+      type: 3
       number: 40
+  - clusters:
+    - startDelay: 0
+      spacing: 0.1
+      type: 2
+      number: 1
+  - clusters:
+    - startDelay: 0
+      spacing: 0.1
+      type: 1
+      number: 1
+  - clusters:
+    - startDelay: 0
+      spacing: 0.1
+      type: 1
+      number: 2
+    - startDelay: 0
+      spacing: 0.1
+      type: 4
+      number: 40
+    - startDelay: 0
+      spacing: 0.1
+      type: 2
+      number: 2
   mText: {fileID: 229709769272096747}
   endingPos: {fileID: 0}
   currentWave: 0

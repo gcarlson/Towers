@@ -109,8 +109,9 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < c.number; i++)
             {
                 yield return new WaitForSeconds(i == 0 ? c.startDelay : c.spacing);
-                var p = Instantiate(enemies[c.type], startingPos[Random.Range(0, startingPos.Count)].position, startingPos[0].rotation);
-                p.GetComponent<UnityEngine.AI.NavMeshAgent>().destination = endingPos.position;
+                var pos = startingPos[Random.Range(0, startingPos.Count)];
+                var o = Instantiate(enemies[c.type], pos.position, pos.rotation);
+                o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
             }
         }
     }
