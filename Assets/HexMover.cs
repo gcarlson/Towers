@@ -12,12 +12,14 @@ public class HexMover : MonoBehaviour
     public float moveSpeed = 1.0f;
     public GameObject HPBar;
     private new SphereCollider collider;
+    private Vector3 d = new Vector3();
 
     // Start is called before the first frame update
     void Start()
     {
+        d = new Vector3(Random.Range(-1.0f, 1.0f), 0.0f, Random.Range(-1.0f, 1.0f)) * 0.25f; 
         nextMove = Time.time;
-        target = HexController.getPos(pos);
+        target = HexController.getPos(pos) + d;
         collider = GetComponent<SphereCollider>();
         visible = (HexController.fogs[pos.x, pos.y] == null);
         if (HPBar)
@@ -39,7 +41,7 @@ public class HexMover : MonoBehaviour
             HPBar.SetActive(visible);
         }
         collider.enabled = visible;
-        target = HexController.getPos(pos);
+        target = HexController.getPos(pos) + d;
         transform.LookAt(target);
         //transform.position = HexController.getPos(pos);
         print("ddd pos: " + pos.x + " " + pos.y + " " + HexController.distance[pos.x, pos.y]);

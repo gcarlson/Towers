@@ -25,6 +25,7 @@ public class SplitterController : EnemyHealth
                 yield return new WaitForSeconds(spawnSpacing);
             }
             print("ddd spawning");
+
             var o = Instantiate(spawn, p, r);
             o.GetComponent<HexMover>().pos = HexController.getNearest(p);
         }

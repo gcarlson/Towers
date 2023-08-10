@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     public int currentWave = 0;
     public TextMeshProUGUI text;
     public Transform[] portals;
+    public GameObject pauseMenu;
+
+    public bool paused = false;
 
     public static void AddMoney(int cash)
     {
@@ -51,10 +54,32 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void Unpause()
+    {
+        paused = false;
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
+    }
+    public void Pause()
+    {
+        paused = true;
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!paused)
+            {
+                Pause();
+            } else
+            {
+                Unpause();
+            }
+        }
         if (Input.GetKeyDown(KeyCode.P))
         {
             var coroutine = SpawnWave(currentWave);
@@ -75,6 +100,12 @@ public class GameManager : MonoBehaviour
             var o = Instantiate(enemies[2], pos.position, pos.rotation);
             o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            var pos = startingPos[Random.Range(0, startingPos.Count)];
+            var o = Instantiate(enemies[5], pos.position, pos.rotation);
+            o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
+        }
         if (Input.GetKeyDown(KeyCode.T))
         {
             var pos = startingPos[Random.Range(0, startingPos.Count)];
@@ -87,8 +118,6 @@ public class GameManager : MonoBehaviour
             var o = Instantiate(enemies[4], pos.position, pos.rotation);
             o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
         }
-
-
     }
 
     private float PathDistance(UnityEngine.AI.NavMeshPath path)

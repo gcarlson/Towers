@@ -26,7 +26,7 @@ public class WindupController : TurretController
     // Update is called once per frame
     public new void Update()
     {
-        if (enemy && Vector3.Distance(transform.position, enemy.transform.position) <= range && enemy.GetComponent<HexMover>().visible)
+        if (enemy && enemy.tag == "Enemy" && Vector3.Distance(transform.position, enemy.transform.position) <= range && enemy.GetComponent<HexMover>().visible)
         {
             var targetPos = enemy.transform.position;
             var lookPos = targetPos - transform.position;
@@ -67,6 +67,7 @@ public class WindupController : TurretController
         }
         else
         {
+            enemy = null;
             if (beam)
             {
                 Destroy(beam);
