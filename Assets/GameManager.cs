@@ -48,10 +48,11 @@ public class GameManager : MonoBehaviour
         foreach (Transform portal in portals)
         {
             startingPos.Add(portal);
+            HexController.spawns.Add(HexController.getNearest(portal.position));
+            HexController.computePaths();
         }
         moneyText = mText;
         moneyText.text = "Money: $" + money;
-
     }
 
     public void Unpause()

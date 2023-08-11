@@ -11,19 +11,27 @@ public class HexController : MonoBehaviour
     public static int gridHeight = 53;
     public GameObject fog;
     public static GameObject fogPrefab;
+    public GameObject path;
+    public static GameObject pathPrefab;
     private static List<Vector2Int> bases;
+    public static List<Vector2Int> spawns = new List<Vector2Int>();
+    
     public GameObject mainBase;
+    public static GameObject[,] paths;
+    public static bool heatmapActive = true;
 
     // Start is called before the first frame update
     void Start()
     {
         print("ddd starting controller");
         fogPrefab = fog;
+        pathPrefab = path;
         bases = new List<Vector2Int>();
         //bases.Add(new Vector2Int(gridWidth / 2, gridHeight / 2));
         bases.Add(getNearest(mainBase.transform.position));
         obstacle = new bool[gridWidth, gridHeight];
         fogs = new GameObject[gridWidth, gridHeight];
+        paths = new GameObject[gridWidth, gridHeight];
 
         for (int i = 0; i < gridWidth; i++)
         {
@@ -225,7 +233,65 @@ public class HexController : MonoBehaviour
             }
             boundary = newBoundary;
         }
+        compute();
 
+    }
+
+    public static void compute()
+    {
+        print("ddd computing " + spawns.Count);
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                if (paths[i, j])
+                {
+                    Destroy(paths[i, j]);
+                    paths[i, j] = null;
+                }
+            }
+        }
+        List<Vector2Int> boundary = spawns;
+
+        for (int i = 1; boundary.Count > 0; i++)
+        {
+            print("ddd computing round: " + i);
+            //print("ddd search depth: " + i + " boundary: " + boundary.Count);
+            List<Vector2Int> newBoundary = new List<Vector2Int>();
+            foreach (Vector2Int v in boundary)
+            {
+                foreach (Vector2Int n in neighbors(v.x, v.y))
+                {
+                    if (!obstacle[n.x, n.y] && distance[n.x, n.y] < distance[v.x, v.y] && !paths[n.x, n.y])
+                    {
+                        newBoundary.Add(n);
+                        var vv = getPos(n);
+                        vv.y = 0.0f;
+                        paths[n.x, n.y] = Instantiate(pathPrefab, vv, Quaternion.identity);
+                        paths[n.x, n.y].SetActive(heatmapActive);
+                        print("ddd color: " + (50 - 5 * distance[n.x, n.y]));
+                        foreach (var o in paths[n.x, n.y].GetComponentsInChildren<Renderer>())
+                        {
+                            
+                            o.material.color = new Color(1.0f - distance[n.x, n.y] / 20.0f, 0, 0);
+                        }
+                    }
+                }
+            }
+            boundary = newBoundary;
+        }
+    }
+
+    public void SetHeatmapActive(bool active)
+    {
+        heatmapActive = active;
+        foreach (GameObject o in paths)
+        {
+            if (o)
+            {
+                o.SetActive(active);
+            }
+        }
     }
 
     // Update is called once per frame
