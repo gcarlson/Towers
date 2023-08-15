@@ -20,7 +20,7 @@ public class SelectionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -42,13 +42,17 @@ public class SelectionManager : MonoBehaviour
             {
                 Ray ray = gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-
+                print("ddd clicked");
                 if (Physics.Raycast(ray, out hit))
                 {
+                    print("ddd clicked hit " + hit.collider.gameObject.layer);
                     var s = hit.collider.gameObject.GetComponent<AmmoSelecter>();
-                    if (selected) { selected.GetTurret().rangeRing.SetActive(false); }
+                    if (selected)
+                    {
+                        selected.GetTurret().rangeRing.SetActive(false);
+                    }
                     if (s) { selected = s; }
-//                    selected = hit.collider.gameObject.GetComponent<TurretController>();
+                    //                    selected = hit.collider.gameObject.GetComponent<TurretController>();
                     if (selected)
                     {
                         dd.value = GetDropDownIndex(selected.GetTurret().priority);
@@ -131,7 +135,7 @@ public class SelectionManager : MonoBehaviour
 
     int GetDropDownIndex(TurretController.Priority priority)
     {
-        return (new[] { 0, 4, 2, 5, 3 })[(int) priority];
+        return (new[] { 0, 4, 2, 5, 3 })[(int)priority];
     }
 
     void FixedUpdate()
