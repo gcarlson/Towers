@@ -9,11 +9,12 @@ public class BulletController : MonoBehaviour
     public TurretController owner;
     public TurretController.Element damageType;
     public GameObject createOnHit;
-
+    public string impactSound = "";
     // Start is called before the first frame update
     void Start()
     {
-
+        if (impactSound != "")
+        { FindObjectOfType<AudioManager>().Play(impactSound); }
     }
 
     // Update is called once per frame
