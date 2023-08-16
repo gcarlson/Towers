@@ -133,7 +133,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   damageType: 1
   createOnHit: {fileID: 0}
-  impactSound: chargeblast
+  impactSound: 
 --- !u!136 &2776884800421751683
 CapsuleCollider:
   m_ObjectHideFlags: 0

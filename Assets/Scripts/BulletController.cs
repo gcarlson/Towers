@@ -13,8 +13,7 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (impactSound != "")
-        { FindObjectOfType<AudioManager>().Play(impactSound); }
+
     }
 
     // Update is called once per frame
@@ -31,6 +30,10 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("ddd bullet collided");
+        if (impactSound.Length != 0)
+        {
+            FindObjectOfType<AudioManager>().Play(impactSound);
+        }
         int d = other.gameObject.GetComponent<EnemyHealth>().Damage(damage, damageType);
         owner.damageTotal += (d < 0 ? 0 - d : d);
         if (d < 0)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class SelectionManager : MonoBehaviour
 {
@@ -38,11 +39,10 @@ public class SelectionManager : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
             {
                 Ray ray = gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                print("ddd clicked");
                 if (Physics.Raycast(ray, out hit))
                 {
                     print("ddd clicked hit " + hit.collider.gameObject.layer);
@@ -51,8 +51,7 @@ public class SelectionManager : MonoBehaviour
                     {
                         selected.GetTurret().rangeRing.SetActive(false);
                     }
-                    if (s) { selected = s; }
-                    //                    selected = hit.collider.gameObject.GetComponent<TurretController>();
+                    selected = s;
                     if (selected)
                     {
                         dd.value = GetDropDownIndex(selected.GetTurret().priority);
@@ -60,7 +59,7 @@ public class SelectionManager : MonoBehaviour
                         List<string> options = new List<string>();
                         foreach (string option in selected.names)
                         {
-                            options.Add(option); // Or whatever you want for a label
+                            options.Add(option);
                         }
                         ammoDropdown.ClearOptions();
                         ammoDropdown.AddOptions(options);
@@ -70,15 +69,12 @@ public class SelectionManager : MonoBehaviour
                     }
                     else
                     {
-                        //turretBar.SetActive(false);
-                        //icon.SetActive(false);
-                        //text.text = "";
+                        turretBar.SetActive(false);
+                        text.text = "";
                     }
                     var clicked = hit.collider.gameObject.GetComponent<OutpostController>();
                     if (clicked)
                     {
-                        //icon.SetActive(true);
-                        //GloryShot.transform.position = selected.transform.position;
                         HexController.spawnOutpost(clicked.transform.position);
                         clicked.EnableOutpost();
                     }

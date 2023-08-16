@@ -20,32 +20,27 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject); 
-
-
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-        }
-
-
-
     }
     void Start() {
         Play("Theme");
     }
     public void Play(string name) { 
-   Sound s = Array.Find(sounds, sound => sound.name == name);
-
+   
+        Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
+        {
             return;
-        
-        s.source.Play();
-    
-    }
-    
+        }
+
+        var o = gameObject.AddComponent<AudioSource>();
+        o.clip = s.clip;
+        o.volume = s.volume;
+        o.pitch = s.pitch;
+        o.loop = s.loop;
+        o.Play();
+        if (!s.loop)
+        {
+            Destroy(o, s.clip.length);
+        }
+    }    
 }
