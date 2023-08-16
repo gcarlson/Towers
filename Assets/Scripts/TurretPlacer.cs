@@ -68,9 +68,21 @@ public class TurretPlacer : MonoBehaviour
             transform.Rotate(0, -60, 0);
             print("ddd offset " + centerOffset);
         }
-        var v3 = Input.mousePosition;
-        print("ddd pos: " + Input.mousePosition);
-        v3 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 60));
+        //var v3 = Input.mousePosition;
+        //print("ddd pos: " + Input.mousePosition);
+        //v3 = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 60));
+
+        Vector3 v3 = new Vector3();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+//            Debug.Log(hit.transform.name);
+            Debug.Log("ddd hit");
+            v3 = hit.point;
+            v3.y = 0;
+        }
+
         print("ddd hover: " + v3);
         float h = 1.73205080757f;
         v3.x -= centerOffset.x;

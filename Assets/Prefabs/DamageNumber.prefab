@@ -128,7 +128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 0.1}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2581009117557049686
@@ -313,6 +313,13 @@ MonoBehaviour:
   value: 5
   canvas: {fileID: 2581009117557049686}
   damageNumber: {fileID: 0}
+  multipliers:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
 --- !u!114 &2603927883184820007
 MonoBehaviour:
   m_ObjectHideFlags: 0
