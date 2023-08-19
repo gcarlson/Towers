@@ -67,6 +67,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
     }
+    public void PlayRound()
+    {
+        var coroutine = SpawnWave(currentWave);
+        StartCoroutine(coroutine);
+        text.text = "Round: " + (currentWave + 1);
+        currentWave = (currentWave + 1) % waves.Length;
+    }
 
     // Update is called once per frame
     void Update()
@@ -83,11 +90,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            var coroutine = SpawnWave(currentWave);
-            StartCoroutine(coroutine);
-            text.text = "Round: " + (currentWave + 1);
-            currentWave = (currentWave + 1) % waves.Length;
-            
+            PlayRound();        
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {

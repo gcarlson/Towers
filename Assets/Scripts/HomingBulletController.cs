@@ -8,7 +8,7 @@ public class HomingBulletController : BulletController
     public Rigidbody rigidBody;
     public float angleChangingSpeed;
     public float movementSpeed;
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (target)
         {
