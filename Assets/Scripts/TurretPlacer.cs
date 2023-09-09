@@ -13,11 +13,12 @@ public class TurretPlacer : MonoBehaviour
     public GameObject footprint;
     public Vector2Int[] hexes = { new Vector2Int(0, 0) };
     public Vector3 centerOffset = new Vector3(0, 0, 0);
+    private LayerMask layerMask = 1783;
 
     // Start is called before the first frame update
     void Start()
     {
-        print("ddd starting");
+        print("ddd starting " + layerMask.value);
         initialColor = footprint.GetComponentInChildren<Renderer>().material.color;
     }
 
@@ -75,7 +76,7 @@ public class TurretPlacer : MonoBehaviour
         Vector3 v3 = new Vector3();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 100, layerMask = layerMask.value))
         {
 //            Debug.Log(hit.transform.name);
             Debug.Log("ddd hit");
@@ -125,6 +126,10 @@ public class TurretPlacer : MonoBehaviour
                 HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
             }
             this.enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            Destroy(gameObject);
         }
     }
 }
