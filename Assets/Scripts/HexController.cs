@@ -133,10 +133,26 @@ public class HexController : MonoBehaviour
         obstacle[x + gridWidth / 2, y + gridHeight / 2] = true;
         computePaths();
     }
+    public static void addObstacles(List<Vector2Int> p)
+    {
+        foreach (Vector2Int v in p)
+        {
+            obstacle[v.x + gridWidth / 2, v.y + gridHeight / 2] = true;
+        }
+        computePaths();
+    }
     public static void removeObstacle(int x, int y)
     {
         print("ddd removing obs pos: " + (x + gridWidth / 2) + " " + (y + gridHeight / 2));
         obstacle[x + gridWidth / 2, y + gridHeight / 2] = false;
+        computePaths();
+    }
+    public static void removeObstacles(List<Vector2Int> p)
+    {
+        foreach (Vector2Int v in p)
+        {
+            obstacle[v.x + gridWidth / 2, v.y + gridHeight / 2] = false;
+        }
         computePaths();
     }
 

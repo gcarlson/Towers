@@ -49,7 +49,7 @@ public class RavenController : MonoBehaviour
             if (enRoute)
             {
                 targetPos.y = 0.5f;
-                var o = Instantiate(projectile, targetPos, transform.rotation);
+                var o = Instantiate(projectile, targetPos, Quaternion.identity);
                 o.GetComponent<NapalmController>().owner = owner;
                 Destroy(o, 0.5f);
                 enRoute = false;
@@ -62,6 +62,7 @@ public class RavenController : MonoBehaviour
             else
             {
                 transform.position += 25.0f * (targetPos - transform.position).normalized * Time.deltaTime;
+            transform.forward = ((targetPos - transform.position).normalized * Time.deltaTime).normalized;
             }
     }
 

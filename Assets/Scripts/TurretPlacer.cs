@@ -49,10 +49,13 @@ public class TurretPlacer : MonoBehaviour
 
     public void Delete()
     {
+        List<Vector2Int> l = new List<Vector2Int>();
         foreach (Vector2Int v in hexes)
         {
-            HexController.removeObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
+            l.Add(new Vector2Int(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1)));
+            //HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
         }
+        HexController.removeObstacles(l);
     }
 
     // Update is called once per frame
@@ -121,10 +124,13 @@ public class TurretPlacer : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canPlace)
         {
             GameManager.AddMoney(0 - value);
+            List<Vector2Int> l = new List<Vector2Int>();
                 foreach (Vector2Int v in hexes)
                 {
-                HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
+                l.Add(new Vector2Int(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1)));
+                //HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
             }
+            HexController.addObstacles(l);
             this.enabled = false;
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
