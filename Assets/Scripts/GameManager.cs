@@ -92,12 +92,12 @@ public class GameManager : MonoBehaviour
         {
             PlayRound();        
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             var pos = startingPos[Random.Range(0, startingPos.Count)];
             var o = Instantiate(enemies[1], pos.position, pos.rotation);
             o.GetComponent<HexMover>().pos = HexController.getNearest(pos.position);
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.W))
         {
             var pos = startingPos[Random.Range(0, startingPos.Count)];

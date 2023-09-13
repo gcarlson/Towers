@@ -79,7 +79,7 @@ public class TurretPlacer : MonoBehaviour
         Vector3 v3 = new Vector3();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, layerMask = layerMask.value))
+        if (Physics.Raycast(ray, out hit, 1000, layerMask = layerMask.value))
         {
 //            Debug.Log(hit.transform.name);
             Debug.Log("ddd hit");

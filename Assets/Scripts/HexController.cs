@@ -47,7 +47,7 @@ public class HexController : MonoBehaviour
             for (int j = 0; j < gridHeight; j++)
             {
                 var v = getPos(new Vector2Int(i, j));
-                v.y = 5.0f;
+                v.y = 0.0f;
                 fogs[i, j] = Instantiate(fog, v, Quaternion.identity);
             }
         }
