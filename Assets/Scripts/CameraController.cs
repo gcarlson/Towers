@@ -19,6 +19,8 @@ public class CameraController : MonoBehaviour
     public float movementSpeed;
     public float movementTime;
     public float rotationAmount;
+    public float minZoom, maxZoom;
+    public float maxX, maxZ;
     public Vector3 zoomAmount;
 
     public Vector3 newPosition;
@@ -134,12 +136,25 @@ public class CameraController : MonoBehaviour
             newZoom -= zoomAmount;
         }
 
+        float zoomSlide = 0.1f * newZoom.y;
         newPosition.y = 0;
+        newPosition.x = Mathf.Clamp(newPosition.x, -maxX + zoomSlide, maxX - zoomSlide);
+        newPosition.z = Mathf.Clamp(newPosition.z, -maxZ + zoomSlide, maxZ - zoomSlide);
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementTime);
         float xrot = newRotation.eulerAngles.x > 180 ? newRotation.eulerAngles.x - 360 : newRotation.eulerAngles.x;
         newRotation = Quaternion.Euler(Mathf.Clamp(xrot, -40, 40), newRotation.eulerAngles.y, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * movementTime);
 
+        if (newZoom.y < minZoom)
+        {
+            newZoom.y = minZoom;
+            newZoom.z = -minZoom;
+        }
+        if (newZoom.y > maxZoom)
+        {
+            newZoom.y = maxZoom;
+            newZoom.z = -maxZoom;
+        }
         cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, newZoom, Time.deltaTime * movementTime);
     }
 

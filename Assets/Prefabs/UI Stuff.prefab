@@ -11372,6 +11372,10 @@ MonoBehaviour:
   movementSpeed: 50
   movementTime: 5
   rotationAmount: 100
+  minZoom: 10
+  maxZoom: 200
+  maxX: 30
+  maxZ: 22
   zoomAmount: {x: 0, y: -10, z: 10}
   newPosition: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0, w: 0}
