@@ -81,19 +81,19 @@ public class CameraController : MonoBehaviour
         print("ddd axis: " + pos.x + " " + Screen.width + " " + pos.y + " " + Screen.height);
         if (pos.x < 0.0f)
         {
-            newPosition -= (transform.right * movementSpeed);
+            newPosition -= (transform.right * movementSpeed * Time.deltaTime);
         }
         else if (pos.x > Screen.width)
         {
-            newPosition += (transform.right * movementSpeed);
+            newPosition += (transform.right * movementSpeed * Time.deltaTime);
         }
         if (pos.y < 0.0f)
         {
-            newPosition -= (transform.forward * movementSpeed);
+            newPosition -= (transform.forward * movementSpeed * Time.deltaTime);
         }
         else if (pos.y > Screen.height)
         {
-            newPosition += (transform.forward * movementSpeed);
+            newPosition += (transform.forward * movementSpeed * Time.deltaTime);
         }
     }
 
@@ -101,28 +101,28 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            newPosition += (transform.forward * movementSpeed);
+            newPosition += (transform.forward * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            newPosition -= (transform.forward * movementSpeed);
+            newPosition -= (transform.forward * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            newPosition += (transform.right * movementSpeed);
+            newPosition += (transform.right * movementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            newPosition -= (transform.right * movementSpeed);
+            newPosition -= (transform.right * movementSpeed * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
+            newRotation *= Quaternion.Euler(Vector3.up * rotationAmount * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.E))
         {
-            newRotation *= Quaternion.Euler(Vector3.down * rotationAmount);
+            newRotation *= Quaternion.Euler(Vector3.down * rotationAmount * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.R))
