@@ -50,6 +50,14 @@ public class CameraController : MonoBehaviour
         HandleMovementInput();
     }
 
+    public void Recenter()
+    {
+        newPosition = Vector3.zero;
+        newRotation = Quaternion.identity;
+        newZoom = new Vector3( 0, 150, -150);
+
+    }
+
     void HandleMouseInput()
     {
         /*if (Input.GetMouseButtonDown(0))

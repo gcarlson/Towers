@@ -22,10 +22,11 @@ public class TurretPlacer : MonoBehaviour
         initialColor = footprint.GetComponentInChildren<Renderer>().material.color;
     }
 
-    Vector3Int oddq_to_cube(Vector2Int hex) {
+    Vector3Int oddq_to_cube(Vector2Int hex)
+    {
         int q = hex.x;
         int r = hex.y - (hex.x - (hex.x & 1)) / 2;
-    return new Vector3Int(q, r, 0 - q - r);
+        return new Vector3Int(q, r, 0 - q - r);
     }
 
     Vector2Int cube_to_oddq(Vector3Int cube)
@@ -39,7 +40,7 @@ public class TurretPlacer : MonoBehaviour
     {
         foreach (Vector2Int v in hexes)
         {
-            if (HexController.isObstructed(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1)))
+            if (HexController.isObstructed(x + v.x, y + v.y + (v.x % 2 != 0 && (v.x + x) % 2 == 0 ? 1 : 0)))
             {
                 return true;
             }
@@ -52,8 +53,7 @@ public class TurretPlacer : MonoBehaviour
         List<Vector2Int> l = new List<Vector2Int>();
         foreach (Vector2Int v in hexes)
         {
-            l.Add(new Vector2Int(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1)));
-            //HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
+            l.Add(new Vector2Int(x + v.x, y + v.y + (v.x % 2 != 0 && (v.x + x) % 2 == 0 ? 1 : 0)));
         }
         HexController.removeObstacles(l);
     }
@@ -67,7 +67,7 @@ public class TurretPlacer : MonoBehaviour
             for (int i = 0; i < hexes.Length; i++)
             {
                 var res = oddq_to_cube(hexes[i]);
-                hexes[i] = cube_to_oddq(new Vector3Int(res.y, res.z, res.x) * -1);      
+                hexes[i] = cube_to_oddq(new Vector3Int(res.y, res.z, res.x) * -1);
             }
             transform.Rotate(0, -60, 0);
             print("ddd offset " + centerOffset);
@@ -81,7 +81,7 @@ public class TurretPlacer : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 1000, layerMask = layerMask.value))
         {
-//            Debug.Log(hit.transform.name);
+            //            Debug.Log(hit.transform.name);
             Debug.Log("ddd hit");
             v3 = hit.point;
             v3.y = 0;
@@ -91,7 +91,7 @@ public class TurretPlacer : MonoBehaviour
         float h = 1.73205080757f;
         v3.x -= centerOffset.x;
         v3.z -= centerOffset.y;
-            x = Mathf.RoundToInt(v3.x * 2.0f / 3.0f);
+        x = Mathf.RoundToInt(v3.x * 2.0f / 3.0f);
         if (x % 2 == 0)
         {
             y = Mathf.RoundToInt(v3.z / h);
@@ -100,7 +100,7 @@ public class TurretPlacer : MonoBehaviour
         {
             y = Mathf.RoundToInt((v3.z - h / 2.0f) / h);
         }
-            transform.position = new Vector3(x * 1.5f + centerOffset.x, 0, y * h + (x % 2 == 0 ? 0 : h / 2) + centerOffset.y);
+        transform.position = new Vector3(x * 1.5f + centerOffset.x, 0, y * h + (x % 2 == 0 ? 0 : h / 2) + centerOffset.y);
         if (Obstructed())
         {
             canPlace = false;
@@ -120,15 +120,14 @@ public class TurretPlacer : MonoBehaviour
                 r.material.SetColor("_Color", initialColor);
             }
         }
-        
+
         if (Input.GetMouseButtonDown(0) && canPlace)
         {
             GameManager.AddMoney(0 - value);
             List<Vector2Int> l = new List<Vector2Int>();
-                foreach (Vector2Int v in hexes)
-                {
-                l.Add(new Vector2Int(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1)));
-                //HexController.addObstacle(x + v.x, y + v.y - (v.x % 2 != 0 && (v.x + x) % 2 != 0 ? 1 : 0) + (v.x % 2 == 0 ? 0 : 1));
+            foreach (Vector2Int v in hexes)
+            {
+                l.Add(new Vector2Int(x + v.x, y + v.y + (v.x % 2 != 0 && (v.x + x) % 2 == 0 ? 1 : 0)));
             }
             HexController.addObstacles(l);
             this.enabled = false;

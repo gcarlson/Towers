@@ -42,7 +42,7 @@ public class HexController : MonoBehaviour
         }
         distance = new int[gridWidth, gridHeight];
         computePaths();
-        for (int i = 35; i < gridWidth; i++)
+        for (int i = 350; i < gridWidth; i++)
         {
             for (int j = 0; j < gridHeight; j++)
             {
@@ -51,6 +51,7 @@ public class HexController : MonoBehaviour
                 fogs[i, j] = Instantiate(fog, v, Quaternion.identity);
             }
         }
+        print("ddd adding done with controller");
     }
     public static Vector2Int getNext(int x, int y)
     {
@@ -131,6 +132,24 @@ public class HexController : MonoBehaviour
     {
         print("ddd adding obs pos: " + (x + gridWidth / 2) + " " + (y + gridHeight / 2));
         obstacle[x + gridWidth / 2, y + gridHeight / 2] = true;
+        computePaths();
+    }
+    public static void addTileObstacles(List<Vector3> p)
+    {
+        print("ddd adding tiles " + p.Count);
+        List<Vector2Int> obs = new List<Vector2Int>();
+        foreach (Vector3 v in p)
+        {
+            obs.Add(getNearest(v));
+        }
+        foreach (Vector2Int v in obs)
+        {
+            print("ddd adding tile: " + v.x + " " + v.y);
+            if (v.x >= 0 && v.x < gridWidth && v.y >= 0 && v.y < gridHeight)
+            {
+                obstacle[v.x, v.y] = true;
+            }
+        }
         computePaths();
     }
     public static void addObstacles(List<Vector2Int> p)
