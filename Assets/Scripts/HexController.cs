@@ -28,7 +28,7 @@ public class HexController : MonoBehaviour
         pathPrefab = path;
         bases = new List<Vector2Int>();
         //bases.Add(new Vector2Int(gridWidth / 2, gridHeight / 2));
-        bases.Add(getNearest(mainBase.transform.position));
+        //bases.Add(getNearest(mainBase.transform.position));
         obstacle = new bool[gridWidth, gridHeight];
         fogs = new GameObject[gridWidth, gridHeight];
         paths = new GameObject[gridWidth, gridHeight];
@@ -85,6 +85,8 @@ public class HexController : MonoBehaviour
         }
         computePaths();
     }
+
+
 
     public static void destroyOutpost(Vector3 p)
     {

@@ -155,8 +155,9 @@ MonoBehaviour:
   angleChangingSpeed: 15
   movementSpeed: 20
   submunitions: {fileID: 5913315479626666771, guid: 59259117053ea52498e762fcc520e9d5, type: 3}
+  subCount: 5
   triggerRange: 8
-  minSplit: 8
+  minSplit: 1
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 64

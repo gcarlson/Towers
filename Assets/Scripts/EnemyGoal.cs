@@ -14,7 +14,10 @@ public class EnemyGoal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "HP Left: " + hp;
+        if (text)
+        {
+            text.text = "HP Left: " + hp;
+        }
     }
 
     // Update is called once per frame
